@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
+import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/api.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Core/Utiles/extentions.dart';
@@ -12,6 +14,10 @@ import 'package:movies_app/Features/home/Data/Models/trending.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies_app/Features/home/Presentation/VieewModel/imageState/get_next_image_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/PageView.dart';
+import 'package:lottie/lottie.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/customeDivider.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/backGroundImage.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/title.dart';
 
 class Topparthomeview extends StatelessWidget {
   Topparthomeview({super.key});
@@ -32,40 +38,35 @@ class Topparthomeview extends StatelessWidget {
                 }
               },
               builder: (context, state) {
-                return Stack(
-                  children: [
-                    ImageFiltered(
-                      imageFilter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                      child: Container(
-                        height: Constants.height * 0.4,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    '${Constants.UrlPath + moviesData[initialImage].backdrop_path}'),
-                                fit: BoxFit.fill)),
+                return Container(
+                  height: Constants.height * 0.59,
+                  child: Stack(
+                    children: [
+                      Backgroundimage(
+                          backdrop_path:
+                              moviesData[initialImage].backdrop_path),
+                      SizedBox(
+                        height: Constants.height * 0.53,
+                        width: Get.width,
+                        child: CustomePageview(
+                          data: moviesData,
+                          index: initialImage,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 450,
-                      width: Get.width,
-                      child: CustomePageview(
-                        data: moviesData,
-                        index: initialImage,
+                      CustomeTitle(
+                        titile: moviesData[initialImage].title,
                       ),
-                    )
-                  ],
+                      CustomeDivider()
+                    ],
+                  ),
                 );
               },
             );
           }
-          /*
-          
-          */
+
           return Center(
-            child: LoadingAnimationWidget.staggeredDotsWave(
-              color: ColorManager.loadingColor,
-              size: 70,
-            ),
+            child: Lottie.asset(Appassetes.loading,
+                width: Constants.width * 0.6, height: Constants.height * 0.17),
           );
         },
         future: ApiService().getTrending(Constants.trendingPoint),

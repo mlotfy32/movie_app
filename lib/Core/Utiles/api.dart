@@ -23,6 +23,18 @@ class ApiService {
     return moviesList;
   }
 
+  Future<List<moviesModelPopular>> getPopular(String endPoint) async {
+    List<moviesModelPopular> moviesList = [];
+    // var response _dio.get('$baseUrl$apiKey');
+
+    var response = await _dio.get('$_baseUrl$endPoint$_apiKey');
+    var data = response.data;
+    for (int i = 0; i < data['results'].length; i++) {
+      moviesList.add(moviesModelPopular.fromJson(data['results'][i]));
+    }
+    return moviesList;
+  }
+
 // //
 //   Future<List<moviesModelSoon>> getMoviesSoom(String endPoint) async {
 //     // Uri url = Uri.parse('$baseUrl/movie/upcoming?api_key=$apiKey');

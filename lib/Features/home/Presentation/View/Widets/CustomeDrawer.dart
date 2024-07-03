@@ -16,6 +16,7 @@ class Customedrawer extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 80, horizontal: 10),
       width: Constants.width * 0.8,
       height: Constants.height,
+      color: ColorManager.PrimaryColor.withOpacity(0.8),
       child: Column(
         children: [
           SizedBox(

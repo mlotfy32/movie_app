@@ -11,4 +11,9 @@ abstract class Fontstyles {
       fontSize: 20,
       color: ColorManager.titlewhite,
       fontWeight: FontWeight.normal);
+  static const titleStyle = TextStyle(
+      fontFamily: 'Merriweather',
+      fontSize: 25,
+      color: ColorManager.titlewhite,
+      fontWeight: FontWeight.bold);
 }

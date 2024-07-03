@@ -5,7 +5,10 @@ import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
+import 'package:movies_app/Core/Utiles/constants.dart';
+import 'package:movies_app/Features/home/Presentation/VieewModel/ChangeMovieState/changemovietype_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeDrawer.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/bottomSection.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/customeAppBar.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/topPartHomeView.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,16 +21,23 @@ class homeViewBody extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Customedrawer(),
-      body: Stack(
-        children: [
-          Topparthomeview(),
-          Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Customeappbar(
-              Drowerkey: _scaffoldKey,
+      body: SizedBox(
+        height: Constants.height,
+        child: Stack(
+          children: [
+            Topparthomeview(),
+            Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: Customeappbar(
+                Drowerkey: _scaffoldKey,
+              ),
             ),
-          ),
-        ],
+            BlocProvider<ChangemovietypeCubit>(
+              create: (context) => ChangemovietypeCubit(),
+              child: Bottomsection(),
+            )
+          ],
+        ),
       ),
     );
   }
