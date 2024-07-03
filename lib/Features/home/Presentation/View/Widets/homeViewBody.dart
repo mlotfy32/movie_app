@@ -5,9 +5,10 @@ import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/draweranimation_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeDrawer.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/customeAppBar.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/topPartHomeView.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class homeViewBody extends StatelessWidget {
   homeViewBody({super.key});
@@ -17,31 +18,15 @@ class homeViewBody extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Customedrawer(),
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-            color: ColorManager.titlewhite,
-            iconSize: 35,
-          )
-        ],
-        elevation: 0.5,
-        leading: IconButton(
-          icon: SvgPicture.asset(Appassetes.menu),
-          onPressed: () {
-            BlocProvider.of<DraweranimationCubit>(context).StartScale();
-            _scaffoldKey.currentState?.openDrawer();
-          },
-        ),
-        title: Text(
-          AppStrings.title,
-          style: Fontstyles.title,
-        ),
-      ),
-      body: Column(
+      body: Stack(
         children: [
           Topparthomeview(),
+          Padding(
+            padding: EdgeInsets.only(top: 30),
+            child: Customeappbar(
+              Drowerkey: _scaffoldKey,
+            ),
+          ),
         ],
       ),
     );

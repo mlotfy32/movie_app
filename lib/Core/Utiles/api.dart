@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
@@ -19,7 +20,6 @@ class ApiService {
     for (int i = 0; i < data['results'].length; i++) {
       moviesList.add(moviesModelTrending.fromJson(data['results'][i]));
     }
-    print(moviesList);
     return moviesList;
   }
 

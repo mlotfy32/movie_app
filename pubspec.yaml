@@ -34,6 +34,8 @@ dependencies:
   flutter_bloc: 
   dio:
   flutter_svg: 
+  font_awesome_flutter: 
+  cached_network_image:
   loading_animation_widget: 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

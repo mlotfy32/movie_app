@@ -5,7 +5,7 @@ import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/draweranimation_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/VieewModel/draweranimation/draweranimation_cubit.dart';
 
 class Customedrawer extends StatelessWidget {
   Customedrawer({super.key});
