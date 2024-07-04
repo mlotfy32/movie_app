@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 abstract class Constants {
   static double width = Get.width;
   static double height = Get.height;
+  static String KBox = 'favorite_movies';
   static List<String> titleMove = [
     'Favorite Movie',
     'Language',

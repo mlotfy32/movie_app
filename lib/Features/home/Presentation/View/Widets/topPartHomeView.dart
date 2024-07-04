@@ -9,7 +9,7 @@ import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/api.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Core/Utiles/extentions.dart';
+import 'package:movies_app/Core/Utiles/Functions.dart';
 import 'package:movies_app/Features/home/Data/Models/trending.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies_app/Features/home/Presentation/VieewModel/imageState/get_next_image_cubit.dart';
