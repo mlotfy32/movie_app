@@ -48,10 +48,10 @@ class Topparthomeview extends StatelessWidget {
                       SizedBox(
                         height: Constants.height * 0.53,
                         width: Get.width,
-                        // child: CustomePageview(
-                        //   data: moviesData,
-                        //   index: initialImage,
-                        // ),
+                        child: CustomePageview(
+                          data: moviesData,
+                          index: initialImage,
+                        ),
                       ),
                       CustomeTitle(
                         titile: moviesData[initialImage].title,

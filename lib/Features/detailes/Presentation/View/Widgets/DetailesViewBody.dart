@@ -32,8 +32,8 @@ class Detailesviewbody extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
-                  Colors.black.withOpacity(0.7),
-                  Colors.black
+                  ColorManager.PrimaryColor.withOpacity(0.7),
+                  ColorManager.PrimaryColor
                 ]),
             borderRadius: BorderRadius.circular(15),
           ),
