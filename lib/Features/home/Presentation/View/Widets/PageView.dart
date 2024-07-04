@@ -10,7 +10,7 @@ import 'package:movies_app/Features/home/Data/Models/trending.dart';
 import 'package:movies_app/Features/home/Presentation/VieewModel/imageState/get_next_image_cubit.dart';
 
 class CustomePageview extends StatefulWidget {
-  const CustomePageview({super.key, required this.Data, required this.index});
+  CustomePageview({super.key, required this.Data, required this.index});
   final List<moviesModelTrending> Data;
   final int index;
   @override

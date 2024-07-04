@@ -49,7 +49,7 @@ class Topparthomeview extends StatelessWidget {
                         height: Constants.height * 0.53,
                         width: Get.width,
                         child: CustomePageview(
-                          data: moviesData,
+                          Data: moviesData,
                           index: initialImage,
                         ),
                       ),
