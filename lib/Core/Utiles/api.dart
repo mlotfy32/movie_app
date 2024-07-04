@@ -13,7 +13,6 @@ class ApiService {
 
   Future<List<moviesModelTrending>> getTrending(String endPoint) async {
     List<moviesModelTrending> moviesList = [];
-    // var response _dio.get('$baseUrl$apiKey');
 
     var response = await _dio.get('$_baseUrl$endPoint$_apiKey');
     var data = response.data;
@@ -25,8 +24,18 @@ class ApiService {
 
   Future<List<moviesModelPopular>> getPopular(String endPoint) async {
     List<moviesModelPopular> moviesList = [];
-    // var response _dio.get('$baseUrl$apiKey');
 
+    var response = await _dio.get('$_baseUrl$endPoint$_apiKey');
+    var data = response.data;
+    for (int i = 0; i < data['results'].length; i++) {
+      moviesList.add(moviesModelPopular.fromJson(data['results'][i]));
+    }
+    return moviesList;
+  }
+
+  Future<List<moviesModelPopular>> getSoon(String endPoint) async {
+    List<moviesModelPopular> moviesList = [];
+    log('======================');
     var response = await _dio.get('$_baseUrl$endPoint$_apiKey');
     var data = response.data;
     for (int i = 0; i < data['results'].length; i++) {

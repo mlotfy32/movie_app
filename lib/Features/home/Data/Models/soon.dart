@@ -1,24 +1,30 @@
-import 'package:movies_app/Features/home/Data/Models/trending.dart';
-
 class moviesModelSoon {
-  final String original_title;
+  final bool adult;
+  final String backdrop_path;
   final String overview;
   final String poster_path;
-  final double vote_average;
-  final double vote_count;
-  moviesModelSoon({
-    required this.original_title,
-    required this.overview,
-    required this.poster_path,
-    required this.vote_average,
-    required this.vote_count,
-  });
+  final String original_title;
+  final dynamic homepage;
+  final String release_date;
+
+  moviesModelSoon(
+      {required this.adult,
+      required this.backdrop_path,
+      required this.overview,
+      required this.homepage,
+      required this.poster_path,
+      required this.original_title,
+      required this.release_date});
+
   factory moviesModelSoon.fromJson(jsonData) {
     return moviesModelSoon(
-        original_title: jsonData['original_title'],
-        overview: jsonData['overview'],
-        poster_path: jsonData['poster_path'],
-        vote_average: jsonData['vote_average'],
-        vote_count: jsonData['vote_count']);
+      adult: jsonData['adult'],
+      backdrop_path: jsonData['backdrop_path'],
+      original_title: jsonData['original_title'],
+      overview: jsonData['overview'],
+      poster_path: jsonData['poster_path'],
+      homepage: jsonData['homepage'],
+      release_date: jsonData['release_date'],
+    );
   }
 }

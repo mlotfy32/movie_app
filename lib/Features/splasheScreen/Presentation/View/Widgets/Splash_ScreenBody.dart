@@ -46,7 +46,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
 
   @override
   void initState() {
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 1), () {
       BlocProvider.of<SplashCubit>(context).startAnimation();
     });
     super.initState();

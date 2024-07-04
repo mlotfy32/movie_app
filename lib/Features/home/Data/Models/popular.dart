@@ -5,15 +5,15 @@ class moviesModelPopular {
   final String title;
   final dynamic vote_average;
   final dynamic vote_count;
-
-  moviesModelPopular({
-    required this.original_language,
-    required this.overview,
-    required this.poster_path,
-    required this.title,
-    required this.vote_average,
-    required this.vote_count,
-  });
+  final String release_date;
+  moviesModelPopular(
+      {required this.original_language,
+      required this.overview,
+      required this.poster_path,
+      required this.title,
+      required this.vote_average,
+      required this.vote_count,
+      required this.release_date});
 
   factory moviesModelPopular.fromJson(jsonData) {
     return moviesModelPopular(
@@ -23,6 +23,7 @@ class moviesModelPopular {
       title: jsonData['title'],
       vote_average: jsonData['vote_average'],
       vote_count: jsonData['vote_count'],
+      release_date: jsonData['release_date'],
     );
   }
 }
