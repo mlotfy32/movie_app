@@ -6,7 +6,7 @@ import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/draweranimation/draweranimation_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/draweranimation/draweranimation_cubit.dart';
 
 class Customeappbar extends StatelessWidget {
   Customeappbar({super.key, required this.Drowerkey});

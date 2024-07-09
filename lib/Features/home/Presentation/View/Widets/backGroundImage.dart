@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/imageState/get_next_image_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/imageState/get_next_image_cubit.dart';
 
 class Backgroundimage extends StatelessWidget {
   const Backgroundimage({super.key, required this.backdrop_path});

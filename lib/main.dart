@@ -6,6 +6,7 @@ import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/blocOpserver.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/Favorite/Data/Models/favorite_Model.dart';
+import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
 import 'package:movies_app/Features/splasheScreen/Presentation/View/splashView.dart';
 
 import 'Features/splasheScreen/Presentation/ViewModel/splash/splash_cubit.dart';
@@ -13,8 +14,8 @@ import 'Features/splasheScreen/Presentation/ViewModel/splash/splash_cubit.dart';
 void main() async {
   Bloc.observer = SimpleBloOpserver();
   await Hive.initFlutter();
-  // await Hive.openBox(Constants.KBox);
   Hive.registerAdapter(FavoriteModelAdapter());
+  await Hive.openBox(Constants.KBox);
   runApp(const MyApp());
 }
 
@@ -23,13 +24,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: ThemeData(
-          scaffoldBackgroundColor: ColorManager.PrimaryColor,
-          appBarTheme:
-              AppBarTheme(color: ColorManager.PrimaryColor, centerTitle: true)),
-      debugShowCheckedModeBanner: false,
-      home: Splashview(),
+    return BlocProvider<AddtofavoriteCubit>(
+      create: (context) => AddtofavoriteCubit(),
+      child: GetMaterialApp(
+        theme: ThemeData(
+            scaffoldBackgroundColor: ColorManager.PrimaryColor,
+            appBarTheme: AppBarTheme(
+                color: ColorManager.PrimaryColor, centerTitle: true)),
+        debugShowCheckedModeBanner: false,
+        home: Splashview(),
+      ),
     );
   }
 }

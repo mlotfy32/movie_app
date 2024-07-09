@@ -1,9 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
+import 'package:movies_app/Features/Favorite/Data/Models/favorite_Model.dart';
+import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
 import 'package:movies_app/Features/detailes/Presentation/View/DetailesView.dart';
 
 class CustomeListView extends StatelessWidget {
@@ -19,18 +23,8 @@ class CustomeListView extends StatelessWidget {
         itemBuilder: (context, index) => Column(
               children: [
                 InkWell(
-                  onTap: () {
-                    Get.to(
-                        duration: Duration(milliseconds: 900),
-                        () => Detailesview(
-                              title: Data[index].title,
-                              Url: Data[index].poster_path,
-                              overView: Data[index].overview,
-                              release_date: Data[index].release_date,
-                              vote_average: Data[index].vote_average,
-                              vote_count: Data[index].vote_count,
-                            ),
-                        curve: Curves.bounceIn);
+                  onTap: () async {
+                    await isContain(index);
                   },
                   child: AnimatedContainer(
                     duration: Duration(seconds: 1),
@@ -66,5 +60,28 @@ class CustomeListView extends StatelessWidget {
                 )
               ],
             ));
+  }
+
+  Future isContain(int index) async {
+    await Hive.openBox(Constants.KBox);
+    try {
+      await Hive.box(Constants.KBox).close();
+      if (!Hive.isBoxOpen(Constants.KBox)) {
+        await Hive.openBox(Constants.KBox);
+        var HiveData = await Hive.box(Constants.KBox).get(Data[index].title);
+        Get.to(
+            duration: Duration(milliseconds: 900),
+            () => Detailesview(
+                  isContain: HiveData == null ? false : true,
+                  title: Data[index].title,
+                  Url: Data[index].poster_path,
+                  overView: Data[index].overview,
+                  release_date: Data[index].release_date,
+                  vote_average: Data[index].vote_average,
+                  vote_count: Data[index].vote_count,
+                ),
+            curve: Curves.bounceIn);
+      }
+    } catch (e) {}
   }
 }

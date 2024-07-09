@@ -13,7 +13,12 @@ class SplashCubit extends Cubit<SplashState> {
   SplashCubit() : super(SplashInitial());
   startAnimation() {
     emit(StartAnimationState(true));
-    Timer(Duration(seconds: 3),
-        () => Get.offAll(() => const Home(), curve: Curves.easeInOut));
+    Timer(
+        Duration(seconds: 3),
+        () => Get.offAll(
+              () => const Home(),
+              curve: Curves.easeInOut,
+              duration: Duration(milliseconds: 900),
+            ));
   }
 }

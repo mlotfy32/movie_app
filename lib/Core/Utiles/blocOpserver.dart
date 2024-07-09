@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
 
 class SimpleBloOpserver implements BlocObserver {
   @override
@@ -8,9 +11,7 @@ class SimpleBloOpserver implements BlocObserver {
   }
 
   @override
-  void onClose(BlocBase bloc) {
-    // TODO: implement onClose
-  }
+  void onClose(BlocBase bloc) {}
 
   @override
   void onCreate(BlocBase bloc) {

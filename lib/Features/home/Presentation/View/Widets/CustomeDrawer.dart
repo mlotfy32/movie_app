@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/draweranimation/draweranimation_cubit.dart';
+import 'package:movies_app/Features/Favorite/Presentation/ViewModel/getData/getdata_cubit.dart';
+import 'package:movies_app/Features/Favorite/Presentation/favorite.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/draweranimation/draweranimation_cubit.dart';
 
 class Customedrawer extends StatelessWidget {
   Customedrawer({super.key});
@@ -54,13 +57,19 @@ class MovieContainer extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: ColorManager.PrimaryColor),
-          child: ListTile(
-              title: Text(
-                Constants.titleMove[index],
-                overflow: TextOverflow.clip,
-                style: Fontstyles.drawerItems,
-              ),
-              trailing: index == 1 ? dropDownMenu() : SizedBox())),
+          child: InkWell(
+            onTap: () {
+              if (index == 0)
+                BlocProvider.of<GetdataCubit>(context).getFavorite();
+            },
+            child: ListTile(
+                title: Text(
+                  Constants.titleMove[index],
+                  overflow: TextOverflow.clip,
+                  style: Fontstyles.drawerItems,
+                ),
+                trailing: index == 1 ? dropDownMenu() : SizedBox()),
+          )),
     );
   }
 }
@@ -68,7 +77,6 @@ class MovieContainer extends StatelessWidget {
 class dropDownMenu extends StatelessWidget {
   dropDownMenu({super.key});
 
-  // القيمة المحددة حاليًا
   String? selectedItem;
 
   @override

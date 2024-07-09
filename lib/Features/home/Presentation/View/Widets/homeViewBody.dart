@@ -6,7 +6,8 @@ import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/ChangeMovieState/changemovietype_cubit.dart';
+import 'package:movies_app/Features/Favorite/Presentation/ViewModel/getData/getdata_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/ChangeMovieState/changemovietype_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeDrawer.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/bottomSection.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/customeAppBar.dart';
@@ -20,7 +21,10 @@ class homeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Customedrawer(),
+      drawer: BlocProvider<GetdataCubit>(
+        create: (context) => GetdataCubit(),
+        child: Customedrawer(),
+      ),
       body: SizedBox(
         height: Constants.height,
         child: Stack(

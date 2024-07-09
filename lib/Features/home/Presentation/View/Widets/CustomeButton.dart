@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/ChangeMovieState/changemovietype_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/ChangeMovieState/changemovietype_cubit.dart';
 
 class CustomeTextButton extends StatelessWidget {
   const CustomeTextButton({super.key, required this.initialIndex});

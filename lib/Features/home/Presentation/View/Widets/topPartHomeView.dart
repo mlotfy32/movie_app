@@ -12,7 +12,7 @@ import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Core/Utiles/Functions.dart';
 import 'package:movies_app/Features/home/Data/Models/trending.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/imageState/get_next_image_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/imageState/get_next_image_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/PageView.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/customeDivider.dart';

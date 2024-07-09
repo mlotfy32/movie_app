@@ -9,6 +9,14 @@ class AddtofavoriteSuccess extends AddtofavoriteState {}
 
 class AddtofavoriteLoading extends AddtofavoriteState {}
 
+class Addtofavorite extends AddtofavoriteState {}
+
+class isContainState extends AddtofavoriteState {
+  final bool isContain;
+
+  isContainState({required this.isContain});
+}
+
 class AddtofavoriteFailure extends AddtofavoriteState {}
 
 class buttonFavoraitState extends AddtofavoriteState {

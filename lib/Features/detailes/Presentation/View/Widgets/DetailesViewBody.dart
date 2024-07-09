@@ -1,40 +1,49 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/Functions.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/Favorite/Presentation/ViewModel/addtofavorite_cubit.dart';
+import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
+import 'package:movies_app/Features/Favorite/Presentation/ViewModel/removeFromFavorite/remove_from_favorite_cubit.dart';
 import 'package:movies_app/Features/detailes/Presentation/View/Widgets/CustomeAppBar.dart';
 
 class Detailesviewbody extends StatelessWidget {
-  const Detailesviewbody(
-      {super.key,
-      required this.Url,
-      required this.overView,
-      required this.vote_average,
-      required this.vote_count,
-      required this.release_date,
-      required this.title});
+  const Detailesviewbody({
+    super.key,
+    required this.Url,
+    required this.overView,
+    required this.vote_average,
+    required this.vote_count,
+    required this.release_date,
+    required this.title,
+    required this.isContain,
+  });
   final String Url, overView, release_date, title;
   final double vote_average;
   final int vote_count;
+  final bool isContain;
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AddtofavoriteCubit, AddtofavoriteState>(
+    return BlocListener<RemoveFromFavoriteCubit, RemoveFromFavoriteState>(
       listener: (context, state) {
-        if (state is AddtofavoriteLoading) {
-          return helper.CustomeDialog(
-              AppStrings.loading, Appassetes.loadingDialog);
-        } else if (state is AddtofavoriteSuccess) {
-          return helper.CustomeDialog(
-              AppStrings.success, Appassetes.successDialog);
-        } else if (state is AddtofavoriteFailure) {
-          return helper.CustomeDialog(
-              AppStrings.faildtoSaveData, Appassetes.failureDialog);
+        if (state is RemoveFromFavoriteLoading) {
+          helper.CustomeDialog(AppStrings.loading, Appassetes.loadingDialog);
+        } else if (state is RemoveFromFavoritSuccess) {
+          Get.back();
+          helper.CustomeDialog(
+              AppStrings.removedsuccessfully, Appassetes.successDialog);
+        } else if (state is RemoveFromFavoriteFailure) {
+          helper.CustomeDialog(
+              AppStrings.faildtoRemove, Appassetes.failureDialog);
         }
+        ;
       },
       child: Scaffold(
           body: SizedBox(
@@ -65,9 +74,14 @@ class Detailesviewbody extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      title,
-                      style: Fontstyles.titleStyle,
+                    SizedBox(
+                      width: Constants.width * 0.7,
+                      child: Text(
+                        title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: Fontstyles.titleStyle,
+                      ),
                     ),
                     Text(
                       '',
@@ -110,13 +124,17 @@ class Detailesviewbody extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: SizedBox(
                         height: 50,
-                        child: CustomeDetailesappbar(
-                          Url: Url,
-                          overView: overView,
-                          release_date: release_date,
-                          title: title,
-                          vote_average: vote_average,
-                          vote_count: vote_count,
+                        child: BlocProvider<AddtofavoriteCubit>(
+                          create: (context) => AddtofavoriteCubit(),
+                          child: CustomeDetailesappbar(
+                            isContain: isContain,
+                            Url: Url,
+                            overView: overView,
+                            release_date: release_date,
+                            title: title,
+                            vote_average: vote_average,
+                            vote_count: vote_count,
+                          ),
                         )))),
           ],
         ),

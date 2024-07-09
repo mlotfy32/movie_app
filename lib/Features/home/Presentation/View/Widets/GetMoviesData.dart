@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/api.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Presentation/VieewModel/ChangeMovieState/changemovietype_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/ChangeMovieState/changemovietype_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeButton.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeListView.dart';
 
