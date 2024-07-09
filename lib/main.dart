@@ -15,7 +15,8 @@ void main() async {
   Bloc.observer = SimpleBloOpserver();
   await Hive.initFlutter();
   Hive.registerAdapter(FavoriteModelAdapter());
-  await Hive.openBox(Constants.KBox);
+  // await Hive.openBox(Constants.KBox);
+  // await Hive.openBox(Constants.KHiveFavorite);
   runApp(const MyApp());
 }
 

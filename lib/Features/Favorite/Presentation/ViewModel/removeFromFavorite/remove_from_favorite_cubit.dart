@@ -22,10 +22,18 @@ class RemoveFromFavoriteCubit extends Cubit<RemoveFromFavoriteState> {
       if (!Hive.isBoxOpen(Constants.KBox)) {
         await Hive.openBox(Constants.KBox);
         await Hive.box(Constants.KBox).delete(Key);
-        emit(RemoveFromFavoritSuccess());
+        List<FavoriteModel> Data =
+            await Hive.box<FavoriteModel>(Constants.KHiveFavorite)
+                .values
+                .toList();
+        emit(RemoveFromFavoritSuccess(Data: Data));
       } else {
+        List<FavoriteModel> Data =
+            await Hive.box<FavoriteModel>(Constants.KHiveFavorite)
+                .values
+                .toList();
         await Hive.box(Constants.KBox).delete(Key);
-        emit(RemoveFromFavoritSuccess());
+        emit(RemoveFromFavoritSuccess(Data: Data));
       }
     } catch (e) {
       emit(RemoveFromFavoriteFailure(failure: AppStrings.faildtoRemove));

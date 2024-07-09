@@ -11,8 +11,9 @@ import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorit
 import 'package:movies_app/Features/detailes/Presentation/View/DetailesView.dart';
 
 class CustomeListView extends StatelessWidget {
-  const CustomeListView({super.key, required this.Data});
+  const CustomeListView({super.key, required this.Data, required this.id});
   final List Data;
+  final List id;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -24,6 +25,7 @@ class CustomeListView extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () async {
+                    log('$id');
                     await isContain(index);
                   },
                   child: AnimatedContainer(
@@ -63,16 +65,36 @@ class CustomeListView extends StatelessWidget {
   }
 
   Future isContain(int index) async {
-    await Hive.openBox(Constants.KBox);
     try {
-      await Hive.box(Constants.KBox).close();
-      if (!Hive.isBoxOpen(Constants.KBox)) {
-        await Hive.openBox(Constants.KBox);
-        var HiveData = await Hive.box(Constants.KBox).get(Data[index].title);
+      await Hive.close();
+      if (!Hive.isBoxOpen(Constants.KBox)) await Hive.openBox(Constants.KBox);
+      var HiveData = await Hive.box(Constants.KBox).get(Data[index].title);
+      log('$HiveData');
+
+      if (HiveData == null) {
+        log('message');
+
         Get.to(
             duration: Duration(milliseconds: 900),
             () => Detailesview(
-                  isContain: HiveData == null ? false : true,
+                  id: id[index].id,
+                  isContain: false,
+                  title: Data[index].title,
+                  Url: Data[index].poster_path,
+                  overView: Data[index].overview,
+                  release_date: Data[index].release_date,
+                  vote_average: Data[index].vote_average,
+                  vote_count: Data[index].vote_count,
+                ),
+            curve: Curves.bounceIn);
+      } else {
+        log('message');
+
+        Get.to(
+            duration: Duration(milliseconds: 900),
+            () => Detailesview(
+                  id: id[index].id,
+                  isContain: true,
                   title: Data[index].title,
                   Url: Data[index].poster_path,
                   overView: Data[index].overview,
@@ -82,6 +104,8 @@ class CustomeListView extends StatelessWidget {
                 ),
             curve: Curves.bounceIn);
       }
-    } catch (e) {}
+    } catch (e) {
+      log('rrrrrrrrrrrrrrr$e');
+    }
   }
 }

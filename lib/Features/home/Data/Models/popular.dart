@@ -1,4 +1,5 @@
 class moviesModelPopular {
+  final int id;
   final String original_language;
   final String overview;
   final String poster_path;
@@ -8,6 +9,7 @@ class moviesModelPopular {
   final String release_date;
   moviesModelPopular(
       {required this.original_language,
+      required this.id,
       required this.overview,
       required this.poster_path,
       required this.title,
@@ -17,6 +19,7 @@ class moviesModelPopular {
 
   factory moviesModelPopular.fromJson(jsonData) {
     return moviesModelPopular(
+      id: jsonData['id'],
       original_language: jsonData['original_language'],
       overview: jsonData['overview'],
       poster_path: jsonData['poster_path'],

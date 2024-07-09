@@ -7,7 +7,7 @@ abstract class AppStrings {
   static const remove = 'Movie removed from favorite';
   static const success = 'Movie added to favorite';
   static const removedsuccessfully = 'Movie removed from favorite';
-
+  static const WatchTrailer = 'WatchTrailer';
   static const faildtoSaveData = 'Failed to save data';
   static const faildtoGetData = 'Failed to get data';
 }

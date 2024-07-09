@@ -5,7 +5,11 @@ abstract class RemoveFromFavoriteState {}
 
 class RemoveFromFavoriteInitial extends RemoveFromFavoriteState {}
 
-class RemoveFromFavoritSuccess extends RemoveFromFavoriteState {}
+class RemoveFromFavoritSuccess extends RemoveFromFavoriteState {
+  final List<FavoriteModel> Data;
+
+  RemoveFromFavoritSuccess({required this.Data});
+}
 
 class RemoveFromFavoriteLoading extends RemoveFromFavoriteState {}
 

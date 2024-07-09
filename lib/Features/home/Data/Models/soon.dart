@@ -1,5 +1,6 @@
 class moviesModelSoon {
   final bool adult;
+  final int id;
   final String backdrop_path;
   final String overview;
   final String poster_path;
@@ -9,6 +10,7 @@ class moviesModelSoon {
 
   moviesModelSoon(
       {required this.adult,
+      required this.id,
       required this.backdrop_path,
       required this.overview,
       required this.homepage,
@@ -18,6 +20,7 @@ class moviesModelSoon {
 
   factory moviesModelSoon.fromJson(jsonData) {
     return moviesModelSoon(
+      id: jsonData['id'],
       adult: jsonData['adult'],
       backdrop_path: jsonData['backdrop_path'],
       original_title: jsonData['original_title'],

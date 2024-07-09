@@ -1,5 +1,6 @@
 class moviesModelTrending {
   final bool adult;
+  final int id;
   final String backdrop_path;
   final String original_language;
   final String overview;
@@ -12,6 +13,7 @@ class moviesModelTrending {
 
   moviesModelTrending(
       {required this.adult,
+      required this.id,
       required this.backdrop_path,
       required this.original_language,
       required this.overview,
@@ -24,6 +26,7 @@ class moviesModelTrending {
 
   factory moviesModelTrending.fromJson(jsonData) {
     return moviesModelTrending(
+      id: jsonData['id'],
       adult: jsonData['adult'],
       backdrop_path: jsonData['backdrop_path'],
       original_language: jsonData['original_language'],

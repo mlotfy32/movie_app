@@ -15,16 +15,19 @@ class Detailesview extends StatelessWidget {
     required this.release_date,
     required this.title,
     required this.isContain,
+    required this.id,
   });
   final String Url, overView, release_date, title;
   final double vote_average;
   final int vote_count;
   final bool isContain;
+  final int id;
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RemoveFromFavoriteCubit>(
       create: (context) => RemoveFromFavoriteCubit(),
       child: Detailesviewbody(
+        id: id,
         isContain: isContain,
         Url: Url,
         overView: overView,

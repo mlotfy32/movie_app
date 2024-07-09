@@ -36,6 +36,7 @@ class GetMovieData extends StatelessWidget {
                   SizedBox(
                     height: Constants.height * 0.35,
                     child: CustomeListView(
+                      id: moviesDataPop,
                       Data: moviesDataPop,
                     ),
                   ),
@@ -44,7 +45,7 @@ class GetMovieData extends StatelessWidget {
             }
 
             return Center(
-              child: Lottie.asset(Appassetes.loading,
+              child: Lottie.asset(Appassetes.loadingDialog,
                   width: Constants.width * 0.6,
                   height: Constants.height * 0.16),
             );

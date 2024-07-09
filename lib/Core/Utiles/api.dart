@@ -3,9 +3,13 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
+import 'package:movies_app/Features/home/Data/Models/actors.dart';
 import 'package:movies_app/Features/home/Data/Models/popular.dart';
 import 'package:movies_app/Features/home/Data/Models/trending.dart';
 
+// vedio= https://api.themoviedb.org/3/movie/1022789/videos?api_key=f33521953035af3fc3162fe1ac22e60c
+// actors = https://api.themoviedb.org/3/movie/1022789/credits?api_key=f33521953035af3fc3162fe1ac22e60c
+// youtube player flutter
 class ApiService {
   Dio _dio = Dio();
   String _baseUrl = 'https://api.themoviedb.org/3';
@@ -18,6 +22,18 @@ class ApiService {
     var data = response.data;
     for (int i = 0; i < data['results'].length; i++) {
       moviesList.add(moviesModelTrending.fromJson(data['results'][i]));
+    }
+    return moviesList;
+  }
+
+  Future<List<moviesModelActoes>> getActors(int id) async {
+    List<moviesModelActoes> moviesList = [];
+
+    var response =
+        await _dio.get('$_baseUrl/movie/$id/credits?api_key=$_apiKey');
+    var data = response.data;
+    for (int i = 0; i < data['cast'].length; i++) {
+      moviesList.add(moviesModelActoes.fromJson(data['cast'][i]));
     }
     return moviesList;
   }

@@ -35,68 +35,70 @@ class CustomeDetailesappbar extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isFavorite = false;
     bool removed = false;
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            icon: Icon(
-              FontAwesomeIcons.chevronLeft,
-              color: Colors.white,
-              size: 30,
-            ),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-          BlocConsumer<AddtofavoriteCubit, AddtofavoriteState>(
-            listener: (context, state) {
-              if (state is buttonFavoraitState) {
-                isFavorite = state.isFavorite;
-              }
-            },
-            builder: (context, state) {
-              return BlocConsumer<RemoveFromFavoriteCubit,
-                  RemoveFromFavoriteState>(
-                listener: (context, state) {
-                  if (state is RemoveFromFavoritSuccess) {
-                    removed = true;
-                  }
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Material(
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () {
+                  Get.back();
                 },
-                builder: (context, state) {
-                  return IconButton(
-                      onPressed: () async {
-                        if (isContain != true) {
-                          BlocProvider.of<AddtofavoriteCubit>(context)
-                              .addToFavorite(
-                                  FavoriteModel(
-                                      Poster_Url: Url,
-                                      overView: overView,
-                                      release_date: release_date,
-                                      title: title,
-                                      vote_average: vote_average,
-                                      vote_count: vote_count),
-                                  title);
-                        }
-                      },
-                      icon: isContain == true && removed == false ||
-                              isFavorite == true && removed == false
-                          ? Icon(
-                              FontAwesomeIcons.solidHeart,
-                              color: Colors.red,
-                              size: 30,
-                            )
-                          : Icon(
-                              FontAwesomeIcons.heart,
-                              color: Colors.white,
-                              size: 30,
-                            ));
-                },
-              );
-            },
-          )
-        ],
+                icon: Icon(
+                  FontAwesomeIcons.chevronLeft,
+                  color: Colors.white,
+                  size: 30,
+                )),
+            BlocConsumer<AddtofavoriteCubit, AddtofavoriteState>(
+              listener: (context, state) {
+                if (state is buttonFavoraitState) {
+                  isFavorite = state.isFavorite;
+                }
+              },
+              builder: (context, state) {
+                return BlocConsumer<RemoveFromFavoriteCubit,
+                    RemoveFromFavoriteState>(
+                  listener: (context, state) {
+                    if (state is RemoveFromFavoritSuccess) {
+                      removed = true;
+                    }
+                  },
+                  builder: (context, state) {
+                    return IconButton(
+                        onPressed: () async {
+                          if (isContain != true) {
+                            BlocProvider.of<AddtofavoriteCubit>(context)
+                                .addToFavorite(
+                                    FavoriteModel(
+                                        Poster_Url: Url,
+                                        overView: overView,
+                                        release_date: release_date,
+                                        title: title,
+                                        vote_average: vote_average,
+                                        vote_count: vote_count),
+                                    title);
+                          }
+                        },
+                        icon: isContain == true && removed == false ||
+                                isFavorite == true && removed == false
+                            ? Icon(
+                                FontAwesomeIcons.solidHeart,
+                                color: Colors.white,
+                                size: 30,
+                              )
+                            : Icon(
+                                FontAwesomeIcons.heart,
+                                color: Colors.white,
+                                size: 30,
+                              ));
+                  },
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }

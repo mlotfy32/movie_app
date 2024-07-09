@@ -17,6 +17,8 @@ class GetdataCubit extends Cubit<GetdataState> {
     try {
       if (!Hive.isBoxOpen(Constants.KHiveFavorite)) {
         await Hive.openBox<FavoriteModel>(Constants.KHiveFavorite);
+        await Hive.openBox<FavoriteModel>(Constants.KBox);
+
         List<FavoriteModel> Data =
             await Hive.box<FavoriteModel>(Constants.KHiveFavorite)
                 .values
