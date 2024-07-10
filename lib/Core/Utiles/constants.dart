@@ -21,4 +21,6 @@ abstract class Constants {
   static String trendingPoint = '/trending/movie/day?api_key=';
   static String popularPoint = '/movie/popular?api_key=';
   static String soonPoint = '/movie/upcoming?api_key=';
+  static String baseUrl = 'https://api.themoviedb.org/3';
+  static String apiKey = 'f33521953035af3fc3162fe1ac22e60c';
 }

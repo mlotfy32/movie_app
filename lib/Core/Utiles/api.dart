@@ -37,13 +37,6 @@ class ApiService {
     var data = response.data;
     for (int i = 0; i < data['results'].length; i++) {
       moviesList.add(moviesModelSearch.fromJson(data['results'][i]));
-      // log('=====${moviesList[i].backdrop_path == null ? '##############################' : 0}');
-      // log('=====${moviesList[i].id == null ? '##############################' : 0}');
-      // log('=====${moviesList[i].overview == null ? '##############################' : 0}');
-      // log('=====${moviesList[i].release_date == null ? '##############################' : 0}');
-      // log('=====${moviesList[i].title == null ? '##############################' : 0}');
-      // log('=====${moviesList[i].vote_average == null ? '##############################' : 0}');
-      // log('=====${moviesList[i].vote_count == null ? '##############################' : 0}');
     }
     return moviesList;
   }

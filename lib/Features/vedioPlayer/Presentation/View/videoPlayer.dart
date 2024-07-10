@@ -14,7 +14,7 @@ import 'package:movies_app/Core/Utiles/api.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/vedioPlayer/Data/Models/video.dart';
 import 'package:movies_app/Features/vedioPlayer/Presentation/View/Widgets/VideoPlayerBody.dart';
-import 'package:movies_app/Features/vedioPlayer/Presentation/ViewModel/get_current_video_cubit.dart';
+import 'package:movies_app/Features/vedioPlayer/Presentation/ViewModel/videoCubit/video_cubit.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Videoplayer extends StatelessWidget {
@@ -46,8 +46,8 @@ class Videoplayer extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<moviesModelVideo> _videos = snapshot.data!;
-                return BlocProvider<GetCurrentVideoCubit>(
-                  create: (context) => GetCurrentVideoCubit(),
+                return BlocProvider<VideoCubit>(
+                  create: (context) => VideoCubit(),
                   child: VideoPlayerBody(
                     videos: _videos,
                     title: title,

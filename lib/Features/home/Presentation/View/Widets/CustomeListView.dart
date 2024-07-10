@@ -9,6 +9,7 @@ import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/Favorite/Data/Models/favorite_Model.dart';
 import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
 import 'package:movies_app/Features/detailes/Presentation/View/DetailesView.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/checkiscontain/checkiscontain_cubit.dart';
 
 class CustomeListView extends StatelessWidget {
   const CustomeListView({super.key, required this.Data, required this.id});
@@ -25,8 +26,8 @@ class CustomeListView extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () async {
-                    log('$id');
-                    await isContain(index);
+                    await BlocProvider.of<CheckiscontainCubit>(context)
+                        .isContain(index, Data);
                   },
                   child: AnimatedContainer(
                     duration: Duration(seconds: 1),
@@ -62,29 +63,5 @@ class CustomeListView extends StatelessWidget {
                 )
               ],
             ));
-  }
-
-  Future isContain(int index) async {
-    try {
-      await Hive.close();
-      if (!Hive.isBoxOpen(Constants.KBox)) await Hive.openBox(Constants.KBox);
-      var HiveData = await Hive.box(Constants.KBox).get(Data[index].title);
-
-      Get.to(
-          duration: Duration(milliseconds: 900),
-          () => Detailesview(
-                id: id[index].id,
-                isContain: HiveData == null ? false : true,
-                title: Data[index].title,
-                Url: Data[index].poster_path,
-                overView: Data[index].overview,
-                release_date: Data[index].release_date,
-                vote_average: Data[index].vote_average,
-                vote_count: Data[index].vote_count,
-              ),
-          curve: Curves.bounceIn);
-    } catch (e) {
-      log('rrrrrrrrrrrrrrr$e');
-    }
   }
 }

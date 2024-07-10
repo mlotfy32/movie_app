@@ -10,7 +10,7 @@ abstract class AppStrings {
   static const WatchTrailer = 'Watch Trailer';
   static const WatchTrailers = 'Watch Trailers';
   static const search = 'Search';
-  static const typeSomething = 'type something to earch';
+  static const typeSomething = 'type something to search';
   static const nomOVIESfOUBD = 'No Movies Found';
 
   static const faildtoSaveData = 'Failed to save data';

@@ -1,6 +1,6 @@
 class moviesModelSearch {
   final int id;
-  final String backdrop_path;
+  final String poster_path;
   final String overview;
   final String release_date;
   final String title;
@@ -9,7 +9,7 @@ class moviesModelSearch {
 
   moviesModelSearch({
     required this.id,
-    required this.backdrop_path,
+    required this.poster_path,
     required this.overview,
     required this.release_date,
     required this.title,
@@ -20,8 +20,8 @@ class moviesModelSearch {
   factory moviesModelSearch.fromJson(jsonData) {
     return moviesModelSearch(
       id: jsonData['id'] == null ? 0 : jsonData['id'],
-      backdrop_path:
-          jsonData['backdrop_path'] == null ? '' : jsonData['backdrop_path'],
+      poster_path:
+          jsonData['poster_path'] == null ? '' : jsonData['poster_path'],
       overview: jsonData['overview'] == null ? '' : jsonData['overview'],
       release_date:
           jsonData['release_date'] == null ? '' : jsonData['release_date'],

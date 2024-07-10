@@ -8,4 +8,11 @@ class SearchAboutCubit extends Cubit<SearchAboutState> {
   searchAbout(String search) {
     emit(SearchAbout(search: search));
   }
+
+  hasData(bool hasdata) {
+    if (hasdata == true)
+      emit(SearcChangeState(hasData: true));
+    else
+      emit(SearcChangeState(hasData: false));
+  }
 }

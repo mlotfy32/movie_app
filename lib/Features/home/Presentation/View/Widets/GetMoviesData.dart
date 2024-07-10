@@ -7,6 +7,7 @@ import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/ChangeMovieState/changemovietype_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeButton.dart';
 import 'package:movies_app/Features/home/Presentation/View/Widets/CustomeListView.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/checkiscontain/checkiscontain_cubit.dart';
 
 class GetMovieData extends StatelessWidget {
   const GetMovieData({
@@ -35,9 +36,12 @@ class GetMovieData extends StatelessWidget {
                       )),
                   SizedBox(
                     height: Constants.height * 0.35,
-                    child: CustomeListView(
-                      id: moviesDataPop,
-                      Data: moviesDataPop,
+                    child: BlocProvider<CheckiscontainCubit>(
+                      create: (context) => CheckiscontainCubit(),
+                      child: CustomeListView(
+                        id: moviesDataPop,
+                        Data: moviesDataPop,
+                      ),
                     ),
                   ),
                 ],

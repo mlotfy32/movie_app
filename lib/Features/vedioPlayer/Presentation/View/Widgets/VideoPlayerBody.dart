@@ -7,7 +7,7 @@ import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/vedioPlayer/Data/Models/video.dart';
-import 'package:movies_app/Features/vedioPlayer/Presentation/ViewModel/get_current_video_cubit.dart';
+import 'package:movies_app/Features/vedioPlayer/Presentation/ViewModel/videoCubit/video_cubit.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPlayerBody extends StatefulWidget {
@@ -56,8 +56,7 @@ class _VideoPlayerBodyState extends State<VideoPlayerBody> {
                       int index = e.key;
                       return Column(
                         children: [
-                          BlocConsumer<GetCurrentVideoCubit,
-                              GetCurrentVideoState>(
+                          BlocConsumer<VideoCubit, VideoState>(
                             listener: (context, state) {
                               if (state is GetCurrentVideo) {
                                 initialVideo = state.currentVideo;
@@ -70,8 +69,7 @@ class _VideoPlayerBodyState extends State<VideoPlayerBody> {
                                 child: InkWell(
                                   onTap: () {
                                     log('======$index');
-                                    BlocProvider.of<GetCurrentVideoCubit>(
-                                            context)
+                                    BlocProvider.of<VideoCubit>(context)
                                         .getCurrentVideo(index);
                                     _controller.load(widget.videos[index].key);
                                     _controller.play();
