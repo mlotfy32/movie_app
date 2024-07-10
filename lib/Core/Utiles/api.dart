@@ -3,12 +3,15 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:movies_app/Features/home/Data/Models/actors.dart';
+import 'package:movies_app/Features/detailes/Data/Models/actors.dart';
 import 'package:movies_app/Features/home/Data/Models/popular.dart';
 import 'package:movies_app/Features/home/Data/Models/trending.dart';
+import 'package:movies_app/Features/search/Data/Models/search.dart';
+import 'package:movies_app/Features/vedioPlayer/Data/Models/video.dart';
 
 // vedio= https://api.themoviedb.org/3/movie/1022789/videos?api_key=f33521953035af3fc3162fe1ac22e60c
 // actors = https://api.themoviedb.org/3/movie/1022789/credits?api_key=f33521953035af3fc3162fe1ac22e60c
+// search = https://api.themoviedb.org/3/search/movie?api_key=f33521953035af3fc3162fe1ac22e60c&query=??
 // youtube player flutter
 class ApiService {
   Dio _dio = Dio();
@@ -22,6 +25,25 @@ class ApiService {
     var data = response.data;
     for (int i = 0; i < data['results'].length; i++) {
       moviesList.add(moviesModelTrending.fromJson(data['results'][i]));
+    }
+    return moviesList;
+  }
+
+  Future<List<moviesModelSearch>> searchAbout(String search) async {
+    List<moviesModelSearch> moviesList = [];
+
+    var response =
+        await _dio.get('$_baseUrl/search/movie?api_key=$_apiKey&query=$search');
+    var data = response.data;
+    for (int i = 0; i < data['results'].length; i++) {
+      moviesList.add(moviesModelSearch.fromJson(data['results'][i]));
+      // log('=====${moviesList[i].backdrop_path == null ? '##############################' : 0}');
+      // log('=====${moviesList[i].id == null ? '##############################' : 0}');
+      // log('=====${moviesList[i].overview == null ? '##############################' : 0}');
+      // log('=====${moviesList[i].release_date == null ? '##############################' : 0}');
+      // log('=====${moviesList[i].title == null ? '##############################' : 0}');
+      // log('=====${moviesList[i].vote_average == null ? '##############################' : 0}');
+      // log('=====${moviesList[i].vote_count == null ? '##############################' : 0}');
     }
     return moviesList;
   }
@@ -60,29 +82,15 @@ class ApiService {
     return moviesList;
   }
 
-// //
-//   Future<List<moviesModelSoon>> getMoviesSoom(String endPoint) async {
-//     // Uri url = Uri.parse('$baseUrl/movie/upcoming?api_key=$apiKey');
-//     var data = await _dio.get('$_baseUrl$endPoint$_apiKey');
-
-//     List<moviesModelSoon> moviesList = [];
-//     for (int i = 0; i < data.length; i++) {
-//       moviesList.add(moviesModelSoon.fromJson(data['results'][i]));
-//     }
-//     print('ffff${data['results'][0]['title']}');
-//     return moviesList;
-//   }
-
-//   Future<List<moviesModelPopular>> getPopular(String endPoint) async {
-//     //  Uri url = Uri.parse('$baseUrl/movie/popular?api_key=$apiKey');
-//     var data = await _dio.get('$_baseUrl$endPoint$_apiKey');
-
-//     Map<String, dynamic> data = jsonDecode(response.body);
-//     List<moviesModelPopular> moviesList = [];
-//     for (int i = 0; i < data['results'].length; i++) {
-//       moviesList.add(moviesModelPopular.fromJson(data['results'][i]));
-//     }
-//     print(moviesList);
-//     return moviesList;
-//   }
+  Future<List<moviesModelVideo>> getVideo(int id) async {
+    List<moviesModelVideo> moviesList = [];
+    log('======================');
+    var response =
+        await _dio.get('$_baseUrl/movie/$id/videos?api_key=$_apiKey');
+    var data = response.data;
+    for (int i = 0; i < data['results'].length; i++) {
+      moviesList.add(moviesModelVideo.fromJson(data['results'][i]));
+    }
+    return moviesList;
+  }
 }

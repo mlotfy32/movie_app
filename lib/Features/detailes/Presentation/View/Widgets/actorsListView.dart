@@ -4,7 +4,7 @@ import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/api.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Features/home/Data/Models/actors.dart';
+import 'package:movies_app/Features/detailes/Data/Models/actors.dart';
 
 class ActorsList extends StatelessWidget {
   const ActorsList({super.key, required this.id});

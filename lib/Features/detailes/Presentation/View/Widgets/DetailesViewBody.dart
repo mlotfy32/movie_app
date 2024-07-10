@@ -16,7 +16,7 @@ import 'package:movies_app/Features/detailes/Presentation/View/Widgets/watchTrai
 import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
 import 'package:movies_app/Features/Favorite/Presentation/ViewModel/removeFromFavorite/remove_from_favorite_cubit.dart';
 import 'package:movies_app/Features/detailes/Presentation/View/Widgets/CustomeAppBar.dart';
-import 'package:movies_app/Features/home/Data/Models/actors.dart';
+import 'package:movies_app/Features/detailes/Data/Models/actors.dart';
 
 class Detailesviewbody extends StatelessWidget {
   const Detailesviewbody({
@@ -89,10 +89,14 @@ class Detailesviewbody extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          title,
-                          style: Fontstyles.titleStyle
-                              .copyWith(color: ColorManager.titlewhite),
+                        SizedBox(
+                          width: Constants.width * 0.8,
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            title,
+                            style: Fontstyles.titleStyle
+                                .copyWith(color: ColorManager.titlewhite),
+                          ),
                         ),
                         Text(
                           "$vote_average",
@@ -116,6 +120,7 @@ class Detailesviewbody extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 4.0),
                     child: Text(
                       overView,
+                      maxLines: 10,
                       style: Fontstyles.titleStyle
                           .copyWith(fontWeight: FontWeight.w500, fontSize: 18),
                     ),
@@ -125,7 +130,7 @@ class Detailesviewbody extends StatelessWidget {
                   child: ActorsList(id: id),
                 ),
                 SliverToBoxAdapter(
-                  child: WatchTrailerButton(),
+                  child: WatchTrailerButton(id: id, title: title),
                 )
               ]),
             ),

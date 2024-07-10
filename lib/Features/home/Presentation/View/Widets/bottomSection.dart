@@ -9,9 +9,9 @@ class Bottomsection extends StatelessWidget {
   Widget build(BuildContext context) {
     int initialIndex = 0;
     return Container(
-        margin: EdgeInsets.only(top: Constants.height * 0.59),
+        margin: EdgeInsets.only(top: Constants.height * 0.58),
         width: Constants.width,
-        height: Constants.height * 0.41,
+        height: Constants.height * 0.42,
         child: GetMovieData());
   }
 }

@@ -7,4 +7,5 @@ abstract class Appassetes {
   static const loadingDialog = 'assets/Animation - 1720105247497.json';
   static const failureDialog = 'assets/Animation - 1720105534215.json';
   static const successDialog = 'assets/Animation - 1720110153623.json';
+  static const searchforData = 'assets/Animation - 1720601966251.json';
 }
