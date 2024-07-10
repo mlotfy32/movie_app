@@ -11,11 +11,14 @@ class WatchTrailerButton extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 3),
         width: Constants.width,
-        height: Constants.height * 0.1,
-        child: Text(
-          AppStrings.WatchTrailer,
-          style: Fontstyles.titleStyle,
+        height: Constants.height * 0.06,
+        child: Center(
+          child: Text(
+            AppStrings.WatchTrailer,
+            style: Fontstyles.titleStyle,
+          ),
         ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
