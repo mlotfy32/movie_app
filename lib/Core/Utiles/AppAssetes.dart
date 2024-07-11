@@ -2,7 +2,7 @@ abstract class Appassetes {
   static const LogoSplash = 'assets/logo (1).png';
   static const menu = 'assets/menu.svg';
   static const posterError =
-      'https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRM0OQsITDDUQ-PCjobiXAyUfEQn1sOAkjorPKB2miR-sYx_aCjqMSevH2Y4WjIvPoA';
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRldoEMQ0VK_xLDreeSpIX3k-4-rPgEkiVAwdV3or7QkiCU9i2eJwDVBJePibFmV7saLE&usqp=CAU';
   static const loading = 'assets/Animation - 1720020148178.json';
   static const loadingDialog = 'assets/Animation - 1720105247497.json';
   static const failureDialog = 'assets/Animation - 1720105534215.json';

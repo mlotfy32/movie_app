@@ -7,8 +7,8 @@ class RemoveFromFavoriteInitial extends RemoveFromFavoriteState {}
 
 class RemoveFromFavoritSuccess extends RemoveFromFavoriteState {
   final List<FavoriteModel> Data;
-
-  RemoveFromFavoritSuccess({required this.Data});
+  final bool isEmpty;
+  RemoveFromFavoritSuccess(this.isEmpty, {required this.Data});
 }
 
 class RemoveFromFavoriteLoading extends RemoveFromFavoriteState {}

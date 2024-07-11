@@ -17,6 +17,7 @@ import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorit
 import 'package:movies_app/Features/Favorite/Presentation/ViewModel/removeFromFavorite/remove_from_favorite_cubit.dart';
 import 'package:movies_app/Features/detailes/Presentation/View/Widgets/CustomeAppBar.dart';
 import 'package:movies_app/Features/detailes/Data/Models/actors.dart';
+import 'package:movies_app/Features/vedioPlayer/Presentation/ViewModel/videoCubit/video_cubit.dart';
 
 class Detailesviewbody extends StatelessWidget {
   const Detailesviewbody({
@@ -50,25 +51,114 @@ class Detailesviewbody extends StatelessWidget {
             helper.CustomeDialog(
                 AppStrings.faildtoRemove, Appassetes.failureDialog);
           }
-          ;
         },
         child: Scaffold(
           body: SafeArea(
             child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(Constants.UrlPath + Url),
-                    fit: BoxFit.fill),
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.transparent,
-                      ColorManager.PrimaryColor.withOpacity(0.7),
-                      ColorManager.PrimaryColor
-                    ]),
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: Constants.height * 0.6,
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: Constants.height * 0.6,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(Url == ''
+                                      ? Appassetes.posterError
+                                      : Constants.UrlPath + Url),
+                                  fit: BoxFit.fill),
+                            ),
+                          ),
+                          Container(
+                            width: Constants.width,
+                            height: Constants.height * 0.6,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Colors.transparent,
+                                    ColorManager.PrimaryColor.withOpacity(0.3),
+                                    ColorManager.PrimaryColor
+                                  ]),
+                            ),
+                          ),
+                          BlocProvider<AddtofavoriteCubit>(
+                              create: (context) => AddtofavoriteCubit(),
+                              child: CustomeDetailesappbar(
+                                isContain: isContain,
+                                Url: Url,
+                                overView: overView,
+                                release_date: release_date,
+                                title: title,
+                                vote_average: vote_average,
+                                vote_count: vote_count,
+                              )),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: Constants.width * 0.8,
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            title,
+                            style: Fontstyles.titleStyle
+                                .copyWith(color: ColorManager.titlewhite),
+                          ),
+                        ),
+                        Text(
+                          "$vote_average",
+                          style: Fontstyles.titleStyle
+                              .copyWith(color: Colors.deepPurple),
+                        )
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(release_date,
+                          style: Fontstyles.titleStyle
+                              .copyWith(color: Colors.deepPurple)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Text(
+                        overView,
+                        style: Fontstyles.titleStyle.copyWith(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        ' Cast',
+                        maxLines: 10,
+                        style: Fontstyles.titleStyle
+                            .copyWith(color: Colors.deepPurple),
+                      ),
+                    ),
+                    ActorsList(id: id),
+                    BlocProvider<VideoCubit>(
+                      create: (context) => VideoCubit(),
+                      child: WatchTrailerButton(id: id, title: title),
+                    )
+                  ],
+                ),
               ),
-              child: CustomScrollView(scrollDirection: Axis.vertical, slivers: [
+            ),
+          ),
+        ));
+  }
+}
+/*
+CustomScrollView(scrollDirection: Axis.vertical, slivers: [
                 SliverToBoxAdapter(
                   child: BlocProvider<AddtofavoriteCubit>(
                       create: (context) => AddtofavoriteCubit(),
@@ -132,9 +222,4 @@ class Detailesviewbody extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: WatchTrailerButton(id: id, title: title),
                 )
-              ]),
-            ),
-          ),
-        ));
-  }
-}
+              ]),*/

@@ -16,25 +16,16 @@ part 'remove_from_favorite_state.dart';
 class RemoveFromFavoriteCubit extends Cubit<RemoveFromFavoriteState> {
   RemoveFromFavoriteCubit() : super(RemoveFromFavoriteInitial());
   removeFavorite(String Key) async {
+    Box myBox;
+    Box<FavoriteModel> myFavoriteBox;
+
     emit(RemoveFromFavoriteLoading());
     try {
-      await Hive.close();
-      if (!Hive.isBoxOpen(Constants.KBox)) {
-        await Hive.openBox(Constants.KBox);
-        await Hive.box(Constants.KBox).delete(Key);
-        List<FavoriteModel> Data =
-            await Hive.box<FavoriteModel>(Constants.KHiveFavorite)
-                .values
-                .toList();
-        emit(RemoveFromFavoritSuccess(Data: Data));
-      } else {
-        List<FavoriteModel> Data =
-            await Hive.box<FavoriteModel>(Constants.KHiveFavorite)
-                .values
-                .toList();
-        await Hive.box(Constants.KBox).delete(Key);
-        emit(RemoveFromFavoritSuccess(Data: Data));
-      }
+      myBox = Hive.box(Constants.KBox);
+      myFavoriteBox = Hive.box<FavoriteModel>(Constants.KHiveFavorite);
+      myBox.delete(Key);
+      List<FavoriteModel> Data = await myFavoriteBox.values.toList();
+      emit(RemoveFromFavoritSuccess(Data.isEmpty ? true : false, Data: Data));
     } catch (e) {
       emit(RemoveFromFavoriteFailure(failure: AppStrings.faildtoRemove));
     }

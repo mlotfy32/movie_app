@@ -9,6 +9,7 @@ import 'package:movies_app/Features/Favorite/Data/Models/favorite_Model.dart';
 import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorite/addtofavorite_cubit.dart';
 import 'package:movies_app/Features/splasheScreen/Presentation/View/splashView.dart';
 import 'package:movies_app/Features/vedioPlayer/Presentation/View/videoPlayer.dart';
+import 'package:movies_app/test.dart';
 
 import 'Features/splasheScreen/Presentation/ViewModel/splash/splash_cubit.dart';
 
@@ -16,8 +17,8 @@ void main() async {
   Bloc.observer = SimpleBloOpserver();
   await Hive.initFlutter();
   Hive.registerAdapter(FavoriteModelAdapter());
-  // await Hive.openBox(Constants.KBox);
-  // await Hive.openBox(Constants.KHiveFavorite);
+  await Hive.openBox<FavoriteModel>('fetch_favorite_movies');
+  await Hive.openBox('favorite_movies');
   runApp(const MyApp());
 }
 
@@ -34,7 +35,9 @@ class MyApp extends StatelessWidget {
             appBarTheme: AppBarTheme(
                 color: ColorManager.PrimaryColor, centerTitle: true)),
         debugShowCheckedModeBanner: false,
-        home: Splashview(),
+        home:
+            // test()
+            Splashview(),
       ),
     );
   }

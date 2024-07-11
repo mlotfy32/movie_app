@@ -1,3 +1,5 @@
+import 'package:movies_app/Core/Utiles/AppAssetes.dart';
+
 class moviesModelSearch {
   final int id;
   final String poster_path;
@@ -22,10 +24,12 @@ class moviesModelSearch {
       id: jsonData['id'] == null ? 0 : jsonData['id'],
       poster_path:
           jsonData['poster_path'] == null ? '' : jsonData['poster_path'],
-      overview: jsonData['overview'] == null ? '' : jsonData['overview'],
-      release_date:
-          jsonData['release_date'] == null ? '' : jsonData['release_date'],
-      title: jsonData['title'] == null ? '' : jsonData['title'],
+      overview:
+          jsonData['overview'] == null ? 'Not avilable' : jsonData['overview'],
+      release_date: jsonData['release_date'] == null
+          ? 'Not found'
+          : jsonData['release_date'],
+      title: jsonData['title'] == null ? 'Not avilable' : jsonData['title'],
       vote_average:
           jsonData['vote_average'] == null ? 0 : jsonData['vote_average'],
       vote_count: jsonData['vote_count'] == null ? 0 : jsonData['vote_count'],

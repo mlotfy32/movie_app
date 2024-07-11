@@ -38,7 +38,7 @@ class CustomeDetailesappbar extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Material(
-        color: Colors.transparent,
+        color: Colors.transparent.withOpacity(0.06),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

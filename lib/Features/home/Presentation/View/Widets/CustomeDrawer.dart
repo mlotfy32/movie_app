@@ -7,7 +7,7 @@ import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/Favorite/Presentation/ViewModel/getData/getdata_cubit.dart';
-import 'package:movies_app/Features/Favorite/Presentation/favorite.dart';
+import 'package:movies_app/Features/Favorite/Presentation/View/favorite.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/draweranimation/draweranimation_cubit.dart';
 
 class Customedrawer extends StatelessWidget {
@@ -60,7 +60,12 @@ class MovieContainer extends StatelessWidget {
           child: InkWell(
             onTap: () {
               if (index == 0)
-                BlocProvider.of<GetdataCubit>(context).getFavorite();
+                Get.to(
+                    () => Favorite(
+                        // Data: Data.isEmpty ? [] : Data,
+                        ),
+                    curve: Curves.bounceIn,
+                    duration: Duration(milliseconds: 900));
             },
             child: ListTile(
                 title: Text(

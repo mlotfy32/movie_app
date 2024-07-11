@@ -40,8 +40,11 @@ class SearchBody extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                     image: DecorationImage(
-                                        image: NetworkImage(Constants.UrlPath +
-                                            Data[index].poster_path),
+                                        image: NetworkImage(
+                                            Data[index].poster_path == ''
+                                                ? Appassetes.posterError
+                                                : Constants.UrlPath +
+                                                    Data[index].poster_path),
                                         fit: BoxFit.fill)),
                               ),
                               Padding(

@@ -6,8 +6,11 @@ import 'package:movies_app/Features/Favorite/Presentation/ViewModel/getData/getd
 import 'package:movies_app/Features/Favorite/Presentation/ViewModel/removeFromFavorite/remove_from_favorite_cubit.dart';
 
 class Favorite extends StatelessWidget {
-  const Favorite({super.key, required this.Data});
-  final List<FavoriteModel> Data;
+  const Favorite({
+    super.key,
+    // required this.Data
+  });
+  // final List<FavoriteModel> Data;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +23,7 @@ class Favorite extends StatelessWidget {
           create: (BuildContext context) => RemoveFromFavoriteCubit(),
         )
       ],
-      child: Favoriteviewbody(
-        Data: Data,
-      ),
+      child: Favoriteviewbody(),
     );
   }
 }

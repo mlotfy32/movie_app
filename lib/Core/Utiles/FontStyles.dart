@@ -9,6 +9,7 @@ abstract class Fontstyles {
       fontWeight: FontWeight.normal);
   static const drawerItems = TextStyle(
       fontSize: 20,
+      fontFamily: 'Merriweather',
       color: ColorManager.titlewhite,
       fontWeight: FontWeight.normal);
   static const titleStyle = TextStyle(

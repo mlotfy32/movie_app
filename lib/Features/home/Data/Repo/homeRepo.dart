@@ -7,5 +7,4 @@ abstract class Homerepo {
   Future<Either<Failure, List<moviesModelPopular>>> feachPopularMovies(
       String endPoint);
   Future<Either<Failure, List<moviesModelTrending>>> feachTreandingMovies();
-  Future<Either<Failure, List<moviesModelSoon>>> feachSoonMovies();
 }

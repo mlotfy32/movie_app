@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
+import 'package:movies_app/Features/Favorite/Data/Models/favorite_Model.dart';
 import 'package:movies_app/Features/detailes/Presentation/View/DetailesView.dart';
 
 part 'checkiscontain_state.dart';
@@ -12,10 +13,11 @@ part 'checkiscontain_state.dart';
 class CheckiscontainCubit extends Cubit<CheckiscontainState> {
   CheckiscontainCubit() : super(CheckiscontainInitial());
   Future isContain(int index, List Data) async {
+    Box myBox;
+
     try {
-      await Hive.close();
-      if (!Hive.isBoxOpen(Constants.KBox)) await Hive.openBox(Constants.KBox);
-      var HiveData = await Hive.box(Constants.KBox).get(Data[index].title);
+      myBox = Hive.box(Constants.KBox);
+      var HiveData = await myBox.get(Data[index].title);
 
       Get.to(
           duration: Duration(milliseconds: 900),

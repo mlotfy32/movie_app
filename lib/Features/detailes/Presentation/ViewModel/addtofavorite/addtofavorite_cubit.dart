@@ -17,18 +17,16 @@ class AddtofavoriteCubit extends Cubit<AddtofavoriteState> {
   AddtofavoriteCubit() : super(AddtofavoriteInitial());
 
   addToFavorite(FavoriteModel favorite, String title) async {
+    Box myBox;
+    Box myFavoriteBox;
     helper.CustomeDialog(AppStrings.loading, Appassetes.loadingDialog);
-    await Hive.close();
     try {
-      if (!Hive.isBoxOpen(Constants.KBox)) {
-        await Hive.openBox(Constants.KBox);
-        await Hive.openBox(Constants.KHiveFavorite);
-        await Hive.box(Constants.KHiveFavorite).add(favorite);
-        await Hive.box(Constants.KBox).put(title, title);
-      }
+      myBox = Hive.box(Constants.KBox);
+      myFavoriteBox = Hive.box<FavoriteModel>(Constants.KHiveFavorite);
+      await myFavoriteBox.add(favorite);
+      await myBox.put(title, title);
       Get.back();
       helper.CustomeDialog(AppStrings.success, Appassetes.successDialog);
-      emit(AddtofavoriteSuccess());
       emit(AddtofavoriteSuccess());
       emit(buttonFavoraitState(isFavorite: true));
     } catch (e) {

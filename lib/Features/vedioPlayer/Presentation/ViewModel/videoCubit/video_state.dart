@@ -11,6 +11,8 @@ class VideoSuccess extends VideoState {
   VideoSuccess({required this.Data});
 }
 
+class VideoLoading extends VideoState {}
+
 class VideoFailure extends VideoState {}
 
 class GetCurrentVideo extends VideoState {

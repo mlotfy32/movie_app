@@ -8,7 +8,7 @@ class GetdataInitial extends GetdataState {}
 class GetdataLoading extends GetdataState {}
 
 class GetdataSuccess extends GetdataState {
-  final List<FavoriteModel> FavoriteMovies;
+  final List FavoriteMovies;
 
   GetdataSuccess({required this.FavoriteMovies});
 }

@@ -18,9 +18,11 @@ import 'package:movies_app/Features/vedioPlayer/Presentation/ViewModel/videoCubi
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Videoplayer extends StatelessWidget {
-  const Videoplayer({super.key, required this.id, required this.title});
+  const Videoplayer(
+      {super.key, required this.id, required this.title, required this.Data});
   final int id;
   final String title;
+  final List<moviesModelVideo> Data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,24 +43,12 @@ class Videoplayer extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: FutureBuilder<List<moviesModelVideo>>(
-            future: ApiService().getVideo(id),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<moviesModelVideo> _videos = snapshot.data!;
-                return BlocProvider<VideoCubit>(
-                  create: (context) => VideoCubit(),
-                  child: VideoPlayerBody(
-                    videos: _videos,
-                    title: title,
-                  ),
-                );
-              }
-              return Center(
-                child: Lottie.asset(Appassetes.loadingDialog,
-                    width: Constants.width * 0.6,
-                    height: Constants.height * 0.17),
-              );
-            }));
+        body: BlocProvider<VideoCubit>(
+          create: (context) => VideoCubit(),
+          child: VideoPlayerBody(
+            videos: Data,
+            title: title,
+          ),
+        ));
   }
 }

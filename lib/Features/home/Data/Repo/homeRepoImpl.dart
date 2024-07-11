@@ -34,12 +34,6 @@ class Homerepoimpl implements Homerepo {
   }
 
   @override
-  Future<Either<Failure, List<moviesModelSoon>>> feachSoonMovies() {
-    // TODO: implement feachSoonMovies
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<Failure, List<moviesModelTrending>>> feachTreandingMovies() {
     // TODO: implement feachTreandingMovies
     throw UnimplementedError();
