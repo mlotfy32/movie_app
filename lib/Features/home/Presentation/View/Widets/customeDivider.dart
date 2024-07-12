@@ -9,13 +9,16 @@ class CustomeDivider extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Container(
-        margin: EdgeInsets.only(top: 440),
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(
+          top: MediaQuery.sizeOf(context).height * 0.56,
+        ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient:
                 LinearGradient(colors: [Colors.blue, Colors.deepPurpleAccent])),
-        width: Constants.width * 0.3,
-        height: 6,
+        width: MediaQuery.sizeOf(context).width * 0.3,
+        height: MediaQuery.sizeOf(context).height * 0.008,
       ),
     );
   }

@@ -15,8 +15,8 @@ class NowplayingCubit extends Cubit<NowplayingState> {
   NowplayingCubit() : super(NowplayingInitial());
 
   Future<void> getNowMovies() async {
-    Dio _dio = Dio();
     emit(NowplayingLoading());
+    Dio _dio = Dio();
     try {
       log('${Constants.baseUrl + Constants.nowPoint + Constants.apiKey}');
       List<moviesModelNow> moviesList = [];

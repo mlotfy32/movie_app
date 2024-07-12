@@ -86,7 +86,9 @@ class _VideoPlayerBodyState extends State<VideoPlayerBody> {
                                         ),
                                         CachedNetworkImage(
                                           fit: BoxFit.fill,
-                                          width: Constants.width * 0.23,
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.23,
                                           imageUrl: YoutubePlayer.getThumbnail(
                                             videoId: widget.videos[index].key,
                                             quality: ThumbnailQuality.high,
@@ -96,7 +98,9 @@ class _VideoPlayerBodyState extends State<VideoPlayerBody> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 5),
                                           child: SizedBox(
-                                            width: Constants.width * 0.7,
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.7,
                                             child: Text(
                                               overflow: TextOverflow.ellipsis,
                                               widget.videos[index].name,

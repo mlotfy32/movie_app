@@ -14,6 +14,7 @@ import 'package:movies_app/Core/Utiles/Functions.dart';
 import 'package:movies_app/Features/home/Data/Models/nowPlaying.dart';
 import 'package:movies_app/Features/home/Data/Models/trending.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/customeAppBar.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/GetNowPlaying/nowplaying_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/checkiscontain/checkiscontain_cubit.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/imageState/get_next_image_cubit.dart';
@@ -24,8 +25,9 @@ import 'package:movies_app/Features/home/Presentation/View/Widets/backGroundImag
 import 'package:movies_app/Features/home/Presentation/View/Widets/title.dart';
 
 class Topparthomeview extends StatelessWidget {
-  Topparthomeview({super.key, required this.Data});
+  Topparthomeview({super.key, required this.Data, required this.scaffoldKey});
   final List<moviesModelNow> Data;
+  final GlobalKey<ScaffoldState> scaffoldKey;
   @override
   Widget build(BuildContext context) {
     int initialImage = 1;
@@ -33,7 +35,6 @@ class Topparthomeview extends StatelessWidget {
     return BlocProvider<GetNextImageCubit>(
       create: (context) => GetNextImageCubit(),
       child: Container(
-        height: Constants.height * 0.59,
         child: BlocConsumer<GetNextImageCubit, GetNextImageState>(
           listener: (context, state) {
             if (state is GetNextImagestate) {
@@ -45,7 +46,7 @@ class Topparthomeview extends StatelessWidget {
               children: [
                 Backgroundimage(backdrop_path: Data[initialImage].poster_path),
                 SizedBox(
-                  height: Constants.height * 0.53,
+                  height: MediaQuery.sizeOf(context).height * 0.53,
                   width: Get.width,
                   child: BlocProvider<CheckiscontainCubit>(
                     create: (context) => CheckiscontainCubit(),
@@ -58,7 +59,13 @@ class Topparthomeview extends StatelessWidget {
                 CustomeTitle(
                   titile: Data[initialImage].title,
                 ),
-                CustomeDivider()
+                CustomeDivider(),
+                Padding(
+                  padding: EdgeInsets.only(top: 25),
+                  child: Customeappbar(
+                    Drowerkey: scaffoldKey,
+                  ),
+                ),
               ],
             );
           },

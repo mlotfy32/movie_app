@@ -27,31 +27,31 @@ class GetMovieData extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List moviesDataPop = snapshot.data!;
-              return Column(
-                children: [
-                  SizedBox(
-                      height: 47,
-                      child: CustomeTextButton(
-                        initialIndex: initialIndex,
-                      )),
-                  SizedBox(
-                    height: Constants.height * 0.35,
-                    child: BlocProvider<CheckiscontainCubit>(
-                      create: (context) => CheckiscontainCubit(),
-                      child: CustomeListView(
-                        id: moviesDataPop,
-                        Data: moviesDataPop,
+              return IntrinsicHeight(
+                child: Column(
+                  children: [
+                    CustomeTextButton(
+                      initialIndex: initialIndex,
+                    ),
+                    Expanded(
+                      // height: Constants.height * 0.41 - 47,
+                      child: BlocProvider<CheckiscontainCubit>(
+                        create: (context) => CheckiscontainCubit(),
+                        child: CustomeListView(
+                          id: moviesDataPop,
+                          Data: moviesDataPop,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             }
 
             return Center(
               child: Lottie.asset(Appassetes.loadingDialog,
-                  width: Constants.width * 0.6,
-                  height: Constants.height * 0.16),
+                  width: MediaQuery.sizeOf(context).width * 0.6,
+                  height: MediaQuery.sizeOf(context).height * 0.16),
             );
           },
           future: initialIndex == 1

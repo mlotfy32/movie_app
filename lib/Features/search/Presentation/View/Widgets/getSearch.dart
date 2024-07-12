@@ -32,7 +32,8 @@ class GetSearch extends StatelessWidget {
           }
           return Center(
             child: Lottie.asset(Appassetes.loadingDialog,
-                width: Constants.width * 0.6, height: Constants.height * 0.17),
+                width: MediaQuery.sizeOf(context).width * 0.6,
+                height: MediaQuery.sizeOf(context).height * 0.17),
           );
         });
   }

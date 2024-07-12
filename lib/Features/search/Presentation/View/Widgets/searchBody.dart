@@ -23,10 +23,10 @@ class SearchBody extends StatelessWidget {
     }, builder: (context, state) {
       return hasData == true
           ? SizedBox(
-              height: Constants.height * 0.9,
+              height: MediaQuery.sizeOf(context).height * 0.9,
               child: ListView.separated(
                   itemBuilder: (context, index) => SizedBox(
-                        height: Constants.height * 0.15,
+                        height: MediaQuery.sizeOf(context).height * 0.15,
                         child: InkWell(
                           onTap: () {
                             BlocProvider.of<CheckiscontainCubit>(context)
@@ -35,8 +35,9 @@ class SearchBody extends StatelessWidget {
                           child: Row(
                             children: [
                               Container(
-                                height: Constants.height * 0.12,
-                                width: Constants.width * 0.23,
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.12,
+                                width: MediaQuery.sizeOf(context).width * 0.23,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                     image: DecorationImage(
@@ -55,7 +56,8 @@ class SearchBody extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      width: Constants.width * 0.73,
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.73,
                                       child: Text(
                                         '  ${Data[index].title}',
                                         style: Fontstyles.titleStyle.copyWith(
@@ -66,7 +68,8 @@ class SearchBody extends StatelessWidget {
                                     ),
                                     Spacer(),
                                     SizedBox(
-                                      width: Constants.width * 0.73,
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.73,
                                       child: Text(
                                         '  ${Data[index].overview}',
                                         style: Fontstyles.titleStyle.copyWith(
@@ -92,7 +95,8 @@ class SearchBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: Constants.height * 0.4),
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.sizeOf(context).width * 0.4),
                   child: Text(
                     AppStrings.nomOVIESfOUBD,
                     style: Fontstyles.titleStyle
@@ -100,8 +104,8 @@ class SearchBody extends StatelessWidget {
                   ),
                 ),
                 Lottie.asset(Appassetes.failureDialog,
-                    width: Constants.width * 0.6,
-                    height: Constants.height * 0.17),
+                    width: MediaQuery.sizeOf(context).width * 0.6,
+                    height: MediaQuery.sizeOf(context).height * 0.17),
               ],
             );
     });

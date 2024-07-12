@@ -10,38 +10,48 @@ class CustomeTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: Constants.moviesTypes.asMap().entries.map((e) {
-          int index = e.key;
-          return TextButton(
-              onPressed: () {
-                BlocProvider.of<ChangemovietypeCubit>(context)
-                    .ChangeMovieType(index);
-              },
-              child: initialIndex == index
-                  ? Column(
-                      children: [
-                        Text(
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.066,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: Constants.moviesTypes.asMap().entries.map((e) {
+            int index = e.key;
+            return TextButton(
+                onPressed: () {
+                  BlocProvider.of<ChangemovietypeCubit>(context)
+                      .ChangeMovieType(index);
+                },
+                child: initialIndex == index
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.sizeOf(context).height * 0.034,
+                            child: Text(
+                              Constants.moviesTypes[index],
+                              style:
+                                  Fontstyles.titleStyle.copyWith(fontSize: 19),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                gradient: LinearGradient(colors: [
+                                  Colors.blue,
+                                  Colors.deepPurpleAccent
+                                ])),
+                            width: MediaQuery.sizeOf(context).width * 0.25,
+                            height: MediaQuery.sizeOf(context).height * 0.005,
+                          ),
+                        ],
+                      )
+                    : SizedBox(
+                        height: MediaQuery.sizeOf(context).height * 0.034,
+                        child: Text(
                           Constants.moviesTypes[index],
-                          style: Fontstyles.titleStyle.copyWith(fontSize: 19),
+                          style: Fontstyles.titleStyle.copyWith(fontSize: 18),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              gradient: LinearGradient(colors: [
-                                Colors.blue,
-                                Colors.deepPurpleAccent
-                              ])),
-                          width: Constants.width * 0.25,
-                          height: 3,
-                        ),
-                      ],
-                    )
-                  : Text(
-                      Constants.moviesTypes[index],
-                      style: Fontstyles.titleStyle.copyWith(fontSize: 18),
-                    ));
-        }).toList());
+                      ));
+          }).toList()),
+    );
   }
 }

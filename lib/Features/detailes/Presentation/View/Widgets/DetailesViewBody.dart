@@ -61,11 +61,11 @@ class Detailesviewbody extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: Constants.height * 0.6,
+                      height: MediaQuery.sizeOf(context).height * 0.6,
                       child: Stack(
                         children: [
                           Container(
-                            height: Constants.height * 0.6,
+                            height: MediaQuery.sizeOf(context).height * 0.6,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: NetworkImage(Url == ''
@@ -75,8 +75,8 @@ class Detailesviewbody extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: Constants.width,
-                            height: Constants.height * 0.6,
+                            width: MediaQuery.sizeOf(context).width,
+                            height: MediaQuery.sizeOf(context).height * 0.6,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -106,7 +106,7 @@ class Detailesviewbody extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: Constants.width * 0.8,
+                          width: MediaQuery.sizeOf(context).width * 0.8,
                           child: Text(
                             overflow: TextOverflow.ellipsis,
                             title,

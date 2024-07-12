@@ -48,8 +48,8 @@ class Searchviewbody extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsets.only(top: Constants.height * 0.4),
+                            padding: EdgeInsets.only(
+                                top: MediaQuery.sizeOf(context).height * 0.4),
                             child: Text(
                               AppStrings.typeSomething,
                               style: Fontstyles.titleStyle
@@ -57,8 +57,8 @@ class Searchviewbody extends StatelessWidget {
                             ),
                           ),
                           Lottie.asset(Appassetes.searchforData,
-                              width: Constants.width * 0.6,
-                              height: Constants.height * 0.17),
+                              width: MediaQuery.sizeOf(context).width * 0.6,
+                              height: MediaQuery.sizeOf(context).height * 0.17),
                         ],
                       )
                     : GetSearch(Search: search),

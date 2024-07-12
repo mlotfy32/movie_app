@@ -17,31 +17,35 @@ class Customeappbar extends StatelessWidget {
   final Drowerkey;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(
-          icon: SvgPicture.asset(Appassetes.menu),
-          onPressed: () {
-            BlocProvider.of<DraweranimationCubit>(context).StartScale();
-            Drowerkey.currentState?.openDrawer();
-          },
-        ),
-        Text(
-          AppStrings.title,
-          style: Fontstyles.title,
-        ),
-        IconButton(
-          onPressed: () {
-            log('message');
-            Get.to(() => Searchview(),
-                curve: Curves.bounceIn, duration: Duration(milliseconds: 900));
-          },
-          icon: Icon(FontAwesomeIcons.search),
-          color: ColorManager.titlewhite,
-          iconSize: 27,
-        )
-      ],
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.08,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+            icon: SvgPicture.asset(Appassetes.menu),
+            onPressed: () {
+              BlocProvider.of<DraweranimationCubit>(context).StartScale();
+              Drowerkey.currentState?.openDrawer();
+            },
+          ),
+          Text(
+            AppStrings.title,
+            style: Fontstyles.title,
+          ),
+          IconButton(
+            onPressed: () {
+              log('message');
+              Get.to(() => Searchview(),
+                  curve: Curves.bounceIn,
+                  duration: Duration(milliseconds: 900));
+            },
+            icon: Icon(FontAwesomeIcons.search),
+            color: ColorManager.titlewhite,
+            iconSize: 27,
+          )
+        ],
+      ),
     );
   }
 }

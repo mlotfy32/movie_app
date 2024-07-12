@@ -15,7 +15,7 @@ class Backgroundimage extends StatelessWidget {
     return ImageFiltered(
       imageFilter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
       child: Container(
-        height: Constants.height * 0.4,
+        height: MediaQuery.sizeOf(context).height * 0.4,
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage('${Constants.UrlPath + backdrop_path}'),

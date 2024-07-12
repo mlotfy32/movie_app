@@ -8,10 +8,6 @@ class Bottomsection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int initialIndex = 0;
-    return Container(
-        margin: EdgeInsets.only(top: Constants.height * 0.58),
-        width: Constants.width,
-        height: Constants.height * 0.42,
-        child: GetMovieData());
+    return GetMovieData();
   }
 }

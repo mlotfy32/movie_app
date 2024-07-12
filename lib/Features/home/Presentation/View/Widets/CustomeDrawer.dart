@@ -17,8 +17,8 @@ class Customedrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 80, horizontal: 10),
-      width: Constants.width * 0.8,
-      height: Constants.height,
+      width: MediaQuery.sizeOf(context).width * 0.8,
+      height: MediaQuery.sizeOf(context).height,
       color: ColorManager.PrimaryColor.withOpacity(0.8),
       child: Column(
         children: [

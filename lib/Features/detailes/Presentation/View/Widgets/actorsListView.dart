@@ -12,8 +12,8 @@ class ActorsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Constants.width,
-      height: Constants.height * 0.35,
+      width: MediaQuery.sizeOf(context).width,
+      height: MediaQuery.sizeOf(context).height * 0.35,
       child: FutureBuilder<List<moviesModelActoes>>(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -24,8 +24,8 @@ class ActorsList extends StatelessWidget {
                 itemBuilder: (context, index) => Column(
                       children: [
                         Container(
-                          width: Constants.width * 0.4,
-                          height: Constants.height * 0.3,
+                          width: MediaQuery.sizeOf(context).width * 0.4,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
                           margin:
                               EdgeInsets.symmetric(horizontal: 3, vertical: 2),
                           decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class ActorsList extends StatelessWidget {
                                   fit: BoxFit.fill)),
                         ),
                         SizedBox(
-                          width: Constants.width * 0.4,
+                          width: MediaQuery.sizeOf(context).width * 0.4,
                           child: Text(
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
@@ -61,7 +61,8 @@ class ActorsList extends StatelessWidget {
 
           return Center(
             child: Lottie.asset(Appassetes.loadingDialog,
-                width: Constants.width * 0.6, height: Constants.height * 0.17),
+                width: MediaQuery.sizeOf(context).width * 0.6,
+                height: MediaQuery.sizeOf(context).height * 0.17),
           );
         },
         future: ApiService().getActors(id),

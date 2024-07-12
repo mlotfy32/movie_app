@@ -35,9 +35,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: AppBarTheme(
                 color: ColorManager.PrimaryColor, centerTitle: true)),
         debugShowCheckedModeBanner: false,
-        home:
-            // test()
-            Splashview(),
+        home: Splashview(),
       ),
     );
   }

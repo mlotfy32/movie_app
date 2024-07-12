@@ -25,56 +25,68 @@ class _CustomePageviewState extends State<CustomePageview> {
   EdgeInsets edgeInsets = EdgeInsets.only(top: 0, right: 0, left: 0);
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        controller: _controller,
-        itemCount: widget.Data.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => Center(
-              child: BlocConsumer<GetNextImageCubit, GetNextImageState>(
-                listener: (context, state) {
-                  edgeInsets = EdgeInsets.only(top: 30);
-                },
-                builder: (context, state) {
-                  return InkWell(
-                    onTap: () async {
-                      await BlocProvider.of<CheckiscontainCubit>(context)
-                          .isContain(index, widget.Data);
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(seconds: 1),
-                      height: widget.index == index ? 290 : 270,
-                      width: widget.index == index ? 200 : 190,
-                      margin: EdgeInsets.only(
-                        left: 0,
-                        right: 0,
-                        top: 100,
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width,
+      child: PageView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _controller,
+          itemCount: widget.Data.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => Center(
+                child: BlocConsumer<GetNextImageCubit, GetNextImageState>(
+                  listener: (context, state) {
+                    edgeInsets = EdgeInsets.only(top: 30);
+                  },
+                  builder: (context, state) {
+                    return InkWell(
+                      onTap: () async {
+                        await BlocProvider.of<CheckiscontainCubit>(context)
+                            .isContain(index, widget.Data);
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(seconds: 1),
+                        height: widget.index == index
+                            ? MediaQuery.sizeOf(context).height * 0.38
+                            : MediaQuery.sizeOf(context).height * 0.37,
+                        width: widget.index == index
+                            ? MediaQuery.sizeOf(context).width * 0.3 > 300
+                                ? 300
+                                // : MediaQuery.sizeOf(context).width * 0.4
+                                : MediaQuery.sizeOf(context).width * 0.5
+                            : MediaQuery.sizeOf(context).width * 0.27 > 320
+                                ? 320
+                                : MediaQuery.sizeOf(context).width * 0.27,
+                        margin: EdgeInsets.only(
+                          left: 0,
+                          right: 0,
+                          top: 80,
+                        ),
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    '${Constants.UrlPath + widget.Data[index].poster_path}'),
+                                fit: BoxFit.fill)),
                       ),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 10,
-                              offset: Offset(0, 5),
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  '${Constants.UrlPath + widget.Data[index].poster_path}'),
-                              fit: BoxFit.fill)),
-                    ),
-                  );
-                },
-              ),
-            ));
+                    );
+                  },
+                ),
+              )),
+    );
   }
 
   @override
   void initState() {
     _controller = PageController(
-        initialPage: widget.index, keepPage: true, viewportFraction: 0.7);
+        initialPage: widget.index, keepPage: true, viewportFraction: 0.5);
     Timer.periodic(const Duration(seconds: 5), (timer) {
       BlocProvider.of<GetNextImageCubit>(context)
           .getNextImage(widget.index, _controller);

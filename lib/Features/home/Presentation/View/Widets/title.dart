@@ -9,11 +9,15 @@ class CustomeTitle extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Padding(
-        padding: const EdgeInsets.only(top: 400, left: 10, right: 10),
-        child: Text(
-          titile,
-          overflow: TextOverflow.ellipsis,
-          style: Fontstyles.titleStyle,
+        padding: EdgeInsets.only(
+            top: MediaQuery.sizeOf(context).height * 0.51, left: 10, right: 10),
+        child: SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.04,
+          child: Text(
+            titile,
+            overflow: TextOverflow.ellipsis,
+            style: Fontstyles.titleStyle,
+          ),
         ),
       ),
     );

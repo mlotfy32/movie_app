@@ -30,11 +30,12 @@ class CustomeListView extends StatelessWidget {
                         .isContain(index, Data);
                   },
                   child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
-                    margin:
-                        EdgeInsets.only(top: 3, left: 5, right: 5, bottom: 0),
-                    width: Constants.width * 0.45,
-                    height: Constants.height * 0.30,
+                    height: MediaQuery.sizeOf(context).height * 0.41 - 76,
+                    duration: Duration(milliseconds: 600),
+                    margin: EdgeInsets.only(left: 5, right: 5, bottom: 0),
+                    width: MediaQuery.sizeOf(context).width * 0.45 > 200
+                        ? 200
+                        : MediaQuery.sizeOf(context).width * 0.45,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: [
@@ -52,8 +53,7 @@ class CustomeListView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: Constants.width * 0.45,
-                  height: 35,
+                  height: MediaQuery.sizeOf(context).height * 0.04,
                   child: Text(
                     textAlign: TextAlign.center,
                     Data[index].title,

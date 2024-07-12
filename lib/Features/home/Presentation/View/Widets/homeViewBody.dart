@@ -35,35 +35,36 @@ class _homeViewBodyState extends State<homeViewBody> {
         create: (context) => GetdataCubit(),
         child: Customedrawer(),
       ),
-      body: SizedBox(
-        height: Constants.height,
-        child: Stack(
-          children: [
-            BlocBuilder<NowplayingCubit, NowplayingState>(
-              builder: (context, state) {
-                return state is NowplayingSuccess
-                    ? Topparthomeview(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          BlocBuilder<NowplayingCubit, NowplayingState>(
+            builder: (context, state) {
+              return state is NowplayingSuccess
+                  ? Container(
+                      // color: Colors.red,
+                      height: MediaQuery.sizeOf(context).height * 0.58,
+                      child: Topparthomeview(
+                        scaffoldKey: _scaffoldKey,
                         Data: state.Data,
-                      )
-                    : Center(
-                        child: Lottie.asset(Appassetes.loadingDialog,
-                            width: Constants.width * 0.6,
-                            height: Constants.height * 0.16),
-                      );
-              },
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: Customeappbar(
-                Drowerkey: _scaffoldKey,
-              ),
-            ),
-            BlocProvider<ChangemovietypeCubit>(
-              create: (context) => ChangemovietypeCubit(),
-              child: Bottomsection(),
-            )
-          ],
-        ),
+                      ),
+                    )
+                  : Container(
+                      height: MediaQuery.sizeOf(context).height * 0.58,
+                      alignment: Alignment.center,
+                      child: Lottie.asset(Appassetes.loadingDialog,
+                          width: MediaQuery.sizeOf(context).width * 0.7,
+                          height: MediaQuery.sizeOf(context).height * 0.2));
+            },
+          ),
+          BlocProvider<ChangemovietypeCubit>(
+            create: (context) => ChangemovietypeCubit(),
+            child: SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.42,
+                child: Bottomsection()),
+          )
+        ],
       ),
     );
   }
