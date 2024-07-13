@@ -12,7 +12,6 @@ import 'package:movies_app/Core/Utiles/FontStyles.dart';
 import 'package:movies_app/Core/Utiles/api.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/feadBack/feadback_cubit.dart';
-import 'package:movies_app/Features/vedioPlayer/Data/repos/VideoRepoImpl.dart';
 
 abstract class helper {
   static CustomeDialog(String title, String url) {
@@ -29,11 +28,4 @@ abstract class helper {
           ),
         ));
   }
-}
-
-final getIt = GetIt.instance;
-
-void setupServiceLocator() {
-  getIt.registerSingleton<ApiService>(ApiService());
-  getIt.registerSingleton<Videorepoimpl>(Videorepoimpl());
 }

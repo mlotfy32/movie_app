@@ -9,9 +9,7 @@ import 'package:movies_app/Core/Utiles/AppAssetes.dart';
 import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/Functions.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
-import 'package:movies_app/Core/errors/Failure.dart';
 import 'package:movies_app/Features/vedioPlayer/Data/Models/video.dart';
-import 'package:movies_app/Features/vedioPlayer/Data/repos/VideoRepo.dart';
 import 'package:movies_app/Features/vedioPlayer/Presentation/View/videoPlayer.dart';
 
 part 'video_state.dart';
