@@ -1,7 +1,10 @@
 abstract class AppStrings {
   static const title = 'MOVIE';
+  static const feadBackWassent = 'You can`t send feadback again';
+  static const gitHupLinh = 'https://github.com/mlotfy32';
   static const emptyData = 'No Data to Display';
-
+  static const feadBack = 'FeadBack';
+  static const sendFeadBack = 'Thank you for supporting us';
   static const loading = 'Loading...';
   static const faildtoRemove = 'Could`t be remove pleasse try again';
   static const remove = 'Movie removed from favorite';

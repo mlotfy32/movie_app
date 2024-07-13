@@ -24,7 +24,9 @@ class WatchTrailerButton extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-        width: MediaQuery.sizeOf(context).width,
+        width: MediaQuery.sizeOf(context).width > 500
+            ? MediaQuery.sizeOf(context).width * 0.5
+            : MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height * 0.06,
         child: Center(
           child: Text(

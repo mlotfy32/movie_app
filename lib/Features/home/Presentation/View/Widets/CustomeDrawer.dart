@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:movies_app/Core/Utiles/AppAssetes.dart';
+import 'package:movies_app/Core/Utiles/AppStrings.dart';
 import 'package:movies_app/Core/Utiles/ColorManager.dart';
 import 'package:movies_app/Core/Utiles/FontStyles.dart';
+import 'package:movies_app/Core/Utiles/Functions.dart';
 import 'package:movies_app/Core/Utiles/constants.dart';
 import 'package:movies_app/Features/Favorite/Presentation/ViewModel/getData/getdata_cubit.dart';
 import 'package:movies_app/Features/Favorite/Presentation/View/favorite.dart';
+import 'package:movies_app/Features/home/Presentation/View/Widets/movieContainer.dart';
 import 'package:movies_app/Features/home/Presentation/ViewModel/draweranimation/draweranimation_cubit.dart';
+import 'package:movies_app/Features/home/Presentation/ViewModel/feadBack/feadback_cubit.dart';
 
 class Customedrawer extends StatelessWidget {
   Customedrawer({super.key});
@@ -36,74 +41,12 @@ class Customedrawer extends StatelessWidget {
               }
             },
           ),
+          SizedBox(
+            height: 20,
+          ),
           Expanded(child: MovieContainer())
         ],
       ),
-    );
-  }
-}
-
-class MovieContainer extends StatelessWidget {
-  const MovieContainer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Constants.titleMove.length,
-      itemBuilder: (context, index) => Container(
-          margin: EdgeInsets.all(3),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: ColorManager.PrimaryColor),
-          child: InkWell(
-            onTap: () {
-              if (index == 0)
-                Get.to(
-                    () => Favorite(
-                        // Data: Data.isEmpty ? [] : Data,
-                        ),
-                    curve: Curves.bounceIn,
-                    duration: Duration(milliseconds: 900));
-            },
-            child: ListTile(
-                title: Text(
-                  Constants.titleMove[index],
-                  overflow: TextOverflow.clip,
-                  style: Fontstyles.drawerItems,
-                ),
-                trailing: index == 1 ? dropDownMenu() : SizedBox()),
-          )),
-    );
-  }
-}
-
-class dropDownMenu extends StatelessWidget {
-  dropDownMenu({super.key});
-
-  String? selectedItem;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownMenu<String>(
-      width: 110,
-      initialSelection: Constants.dropDownItems[0],
-      requestFocusOnTap: true,
-      label: Text(Constants.dropDownItems[0]),
-      onSelected: (value) {
-        // setState(() {
-        //   selectedItem = items[0];
-        // });
-      },
-      dropdownMenuEntries:
-          Constants.dropDownItems.map<DropdownMenuEntry<String>>((value) {
-        return DropdownMenuEntry<String>(
-          value: Constants.dropDownItems[1],
-          label: Constants.dropDownItems[0],
-          enabled: false,
-        );
-      }).toList(),
     );
   }
 }

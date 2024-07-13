@@ -21,7 +21,6 @@ class CustomePageview extends StatefulWidget {
 
 class _CustomePageviewState extends State<CustomePageview> {
   PageController _controller = PageController();
-  int x = 1;
   EdgeInsets edgeInsets = EdgeInsets.only(top: 0, right: 0, left: 0);
   @override
   Widget build(BuildContext context) {
@@ -49,13 +48,32 @@ class _CustomePageviewState extends State<CustomePageview> {
                             ? MediaQuery.sizeOf(context).height * 0.38
                             : MediaQuery.sizeOf(context).height * 0.37,
                         width: widget.index == index
-                            ? MediaQuery.sizeOf(context).width * 0.3 > 300
-                                ? 300
-                                // : MediaQuery.sizeOf(context).width * 0.4
-                                : MediaQuery.sizeOf(context).width * 0.5
-                            : MediaQuery.sizeOf(context).width * 0.27 > 320
-                                ? 320
-                                : MediaQuery.sizeOf(context).width * 0.27,
+                            ? MediaQuery.sizeOf(context).width > 300 &&
+                                    MediaQuery.sizeOf(context).width <= 400
+                                ? MediaQuery.sizeOf(context).width * 0.6
+                                : MediaQuery.sizeOf(context).width > 400 &&
+                                        MediaQuery.sizeOf(context).width <= 500
+                                    ? MediaQuery.sizeOf(context).width * 0.6
+                                    : MediaQuery.sizeOf(context).width > 500 &&
+                                            MediaQuery.sizeOf(context).width <=
+                                                800
+                                        ? MediaQuery.sizeOf(context).width * 0.4
+                                        : MediaQuery.sizeOf(context).width * 0.3
+                            : MediaQuery.sizeOf(context).width > 300 &&
+                                    MediaQuery.sizeOf(context).width <= 400
+                                ? MediaQuery.sizeOf(context).width * 0.6 - 10
+                                : MediaQuery.sizeOf(context).width > 400 &&
+                                        MediaQuery.sizeOf(context).width <= 500
+                                    ? MediaQuery.sizeOf(context).width * 0.6 -
+                                        10
+                                    : MediaQuery.sizeOf(context).width > 500 &&
+                                            MediaQuery.sizeOf(context).width <=
+                                                800
+                                        ? MediaQuery.sizeOf(context).width *
+                                                0.4 -
+                                            10
+                                        : MediaQuery.sizeOf(context).width *
+                                            0.3,
                         margin: EdgeInsets.only(
                           left: 0,
                           right: 0,
@@ -86,10 +104,11 @@ class _CustomePageviewState extends State<CustomePageview> {
   @override
   void initState() {
     _controller = PageController(
-        initialPage: widget.index, keepPage: true, viewportFraction: 0.5);
+        initialPage: widget.index, keepPage: true, viewportFraction: 0.7);
     Timer.periodic(const Duration(seconds: 5), (timer) {
       BlocProvider.of<GetNextImageCubit>(context)
           .getNextImage(widget.index, _controller);
+      log('${Get.width}');
     });
     super.initState();
   }

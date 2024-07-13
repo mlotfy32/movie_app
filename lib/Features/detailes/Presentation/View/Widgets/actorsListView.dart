@@ -24,7 +24,9 @@ class ActorsList extends StatelessWidget {
                 itemBuilder: (context, index) => Column(
                       children: [
                         Container(
-                          width: MediaQuery.sizeOf(context).width * 0.4,
+                          width: MediaQuery.sizeOf(context).width * 0.45 > 200
+                              ? 200
+                              : MediaQuery.sizeOf(context).width * 0.45,
                           height: MediaQuery.sizeOf(context).height * 0.3,
                           margin:
                               EdgeInsets.symmetric(horizontal: 3, vertical: 2),
@@ -47,7 +49,9 @@ class ActorsList extends StatelessWidget {
                                   fit: BoxFit.fill)),
                         ),
                         SizedBox(
-                          width: MediaQuery.sizeOf(context).width * 0.4,
+                          width: MediaQuery.sizeOf(context).width * 0.4 > 200
+                              ? 200
+                              : MediaQuery.sizeOf(context).width * 0.4,
                           child: Text(
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,

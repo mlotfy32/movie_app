@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 abstract class Constants {
@@ -10,12 +12,7 @@ abstract class Constants {
   static String notAvilable = 'Video is not available';
   static String serverFailure = 'Server Failure';
 
-  static List<String> titleMove = [
-    'Favorite Movie',
-    'Language',
-    'Feedback',
-    'About'
-  ];
+  static List<String> titleMove = ['Favorite Movie', 'Feedback', 'About'];
   static List<String> moviesTypes = [
     'Popular',
     'Soon',
@@ -29,4 +26,18 @@ abstract class Constants {
   static String nowPoint = '/movie/now_playing?api_key=';
   static String baseUrl = 'https://api.themoviedb.org/3';
   static String apiKey = 'f33521953035af3fc3162fe1ac22e60c';
+  static List<Icon> icons = [
+    Icon(
+      FontAwesomeIcons.bookmark,
+      color: Colors.white,
+    ),
+    Icon(
+      FontAwesomeIcons.commentDots,
+      color: Colors.white,
+    ),
+    Icon(
+      FontAwesomeIcons.circleInfo,
+      color: Colors.white,
+    )
+  ];
 }

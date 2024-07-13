@@ -33,22 +33,6 @@ class ApiService {
     return moviesList;
   }
 
-  // Future<List<moviesModelNow>> getnow() async {
-  //   List<moviesModelNow> moviesList = [];
-
-  //   var response = await _dio
-  //       .get('${Constants.baseUrl + Constants.nowPoint + Constants.apiKey}');
-  //   var data = response.data;
-  //   for (int i = 0; i < data['results'].length; i++) {
-  //     moviesList.add(moviesModelNow.fromJson(data['results'][i]));
-  //     if (moviesList[i].backdrop_path == null ||
-  //         moviesList[i].backdrop_path.isEmpty) {
-  //       log('====null');
-  //     }
-  //   }
-  //   return moviesList;
-  // }
-
   Future<List<moviesModelSearch>> searchAbout(String search) async {
     List<moviesModelSearch> moviesList = [];
 

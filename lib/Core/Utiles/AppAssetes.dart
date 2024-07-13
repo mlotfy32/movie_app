@@ -8,4 +8,5 @@ abstract class Appassetes {
   static const failureDialog = 'assets/Animation - 1720105534215.json';
   static const successDialog = 'assets/Animation - 1720110153623.json';
   static const searchforData = 'assets/Animation - 1720601966251.json';
+  static const star = 'assets/star-solid.svg';
 }

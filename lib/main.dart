@@ -10,15 +10,19 @@ import 'package:movies_app/Features/detailes/Presentation/ViewModel/addtofavorit
 import 'package:movies_app/Features/splasheScreen/Presentation/View/splashView.dart';
 import 'package:movies_app/Features/vedioPlayer/Presentation/View/videoPlayer.dart';
 import 'package:movies_app/test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Features/splasheScreen/Presentation/ViewModel/splash/splash_cubit.dart';
 
+SharedPreferences? feadBack;
 void main() async {
   Bloc.observer = SimpleBloOpserver();
   await Hive.initFlutter();
   Hive.registerAdapter(FavoriteModelAdapter());
   await Hive.openBox<FavoriteModel>('fetch_favorite_movies');
   await Hive.openBox('favorite_movies');
+  feadBack = await SharedPreferences.getInstance();
+  feadBack!.clear();
   runApp(const MyApp());
 }
 

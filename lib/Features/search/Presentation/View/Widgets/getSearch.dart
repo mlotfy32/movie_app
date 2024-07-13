@@ -27,7 +27,10 @@ class GetSearch extends StatelessWidget {
             List<moviesModelSearch> Data = snapshot.data!;
             return BlocProvider<CheckiscontainCubit>(
               create: (context) => CheckiscontainCubit(),
-              child: SearchBody(Data: Data),
+              child: SearchBody(
+                Data: Data,
+                hasData: Data.isEmpty ? false : true,
+              ),
             );
           }
           return Center(

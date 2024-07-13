@@ -32,7 +32,7 @@ class CustomeListView extends StatelessWidget {
                   child: AnimatedContainer(
                     height: MediaQuery.sizeOf(context).height * 0.41 - 76,
                     duration: Duration(milliseconds: 600),
-                    margin: EdgeInsets.only(left: 5, right: 5, bottom: 0),
+                    margin: EdgeInsets.only(left: 5, right: 5),
                     width: MediaQuery.sizeOf(context).width * 0.45 > 200
                         ? 200
                         : MediaQuery.sizeOf(context).width * 0.45,
@@ -53,7 +53,10 @@ class CustomeListView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.04,
+                  width: MediaQuery.sizeOf(context).width * 0.45 > 200
+                      ? 200
+                      : MediaQuery.sizeOf(context).width * 0.45,
+                  height: 22,
                   child: Text(
                     textAlign: TextAlign.center,
                     Data[index].title,
