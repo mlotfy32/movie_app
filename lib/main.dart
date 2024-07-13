@@ -21,7 +21,6 @@ void main() async {
   await Hive.openBox<FavoriteModel>('fetch_favorite_movies');
   await Hive.openBox('favorite_movies');
   feadBack = await SharedPreferences.getInstance();
-  feadBack!.clear();
   runApp(const MyApp());
 }
 
