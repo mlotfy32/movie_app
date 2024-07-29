@@ -1,16 +1,12 @@
-# movies_app
+![IMG_20240714_191604](https://github.com/user-attachments/assets/20f190b9-1b08-4a43-9df9-c14f66838187)
+Some of the cool features applied in this project:
 
-A new Flutter project.
+. Use Bloc as state Management.
 
-## Getting Started
+• Enhanced clean architecture.
 
-This project is a starting point for a Flutter application.
+• Some Simple Animation.
 
-A few resources to get you started if this is your first Flutter project:
+• Dio Package for API.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+• Shared Preferences Package to cash info.
