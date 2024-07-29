@@ -1,19 +1,23 @@
+# movie_app
+
 Some of the cool features applied in this project:
 
 . Use Bloc as state Management.
 
-• Enhanced clean architecture.
+• MVVM clean architecture.
 
-• Some Simple Animation.
+• Simple Animation.
+
+• Use Hive as local storage.
 
 • Dio Package for API.
 
+• Use  youtube_player_flutter package to display movie trailer.
+
 • Shared Preferences Package to cash info.
 
-[Image](
-https://drive.google.com/file/d/16osxo4wYtlOLIq8b-6T_7P7nAbKg91-S/view?usp=drivesdk
-)
+# App Screens
+![IMG_20240714_191604](https://github.com/user-attachments/assets/e00279ad-d2e2-4def-858c-7e276ac3fe10)
 
-[Video](
+# Video
 https://drive.google.com/file/d/16k1HPNpEEMrCUN70dpxObQBefNTR0ers/view?usp=drivesdk
-)
