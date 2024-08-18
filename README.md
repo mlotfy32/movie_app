@@ -20,7 +20,5 @@ Some of the cool features applied in this project:
 ![IMG_20240714_191604](https://github.com/user-attachments/assets/e00279ad-d2e2-4def-858c-7e276ac3fe10)
 
 # Video
-
-
 https://github.com/user-attachments/assets/d32a48c0-8d97-4da3-b220-4aa85e8ffd93
 
