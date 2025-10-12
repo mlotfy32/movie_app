@@ -1,0 +1,21 @@
+workflows:
+  ios-workflow:
+    name: Build iOS app
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build iOS app
+        script: flutter build ios --release --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/ios/iphoneos/*.app
+    publishing:
+      email:
+        recipients:
+          - your_email@example.com
